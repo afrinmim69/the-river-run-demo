@@ -9,14 +9,17 @@
 :root{
 --primary:#0f4c5c;
 --secondary:#20c9c9;
+--bg2:#0b3b45;
 --text:#ffffff;
 }
+
+*{box-sizing:border-box}
 
 body{
 margin:0;
 font-family:Arial,Helvetica,sans-serif;
 background:var(--primary);
-color:var(--text);
+color:white;
 }
 
 header{
@@ -32,7 +35,7 @@ z-index:10;
 }
 
 nav a{
-margin:0 12px;
+margin:0 14px;
 text-decoration:none;
 color:white;
 font-weight:bold;
@@ -49,48 +52,49 @@ cursor:pointer;
 }
 
 .hero{
-padding:80px 20px;
+padding:100px 20px;
 text-align:center;
-max-width:1000px;
-margin:auto;
+background:linear-gradient(180deg,#0f4c5c,#0b3b45);
 }
 
-.hero h1{font-size:42px}
+.hero h1{font-size:46px;margin-bottom:10px}
+.hero p{font-size:18px;opacity:.9}
 
 .slider{
 margin-top:25px;
 font-size:20px;
-color:#cfffff;
+color:#bfffff;
 }
 
 .section{
-padding:50px 20px;
+padding:60px 20px;
 max-width:1200px;
 margin:auto;
 }
 
 .section-title{
-font-size:28px;
+font-size:30px;
 margin-bottom:25px;
+text-align:center;
 }
 
 .categories{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
 .card{
-background:#0b3b45;
-padding:25px;
+background:var(--bg2);
+padding:30px;
 border-radius:12px;
 border:1px solid var(--secondary);
 text-align:center;
 cursor:pointer;
-transition:.25s;
+transition:.3s;
 }
 
-.card:hover{transform:scale(1.05)}
+.card:hover{transform:translateY(-6px) scale(1.03)}
 
 .products{
 display:grid;
@@ -99,15 +103,18 @@ gap:25px;
 }
 
 .product{
-background:#0b3b45;
+background:var(--bg2);
 border-radius:12px;
 overflow:hidden;
 border:1px solid var(--secondary);
+transition:.3s;
 }
+
+.product:hover{transform:translateY(-5px)}
 
 .product img{
 width:100%;
-height:200px;
+height:210px;
 object-fit:cover;
 }
 
@@ -127,25 +134,10 @@ width:100%;
 border-radius:10px;
 }
 
-.thumbs{
-display:flex;
-gap:10px;
-margin-top:10px;
-}
+.thumbs{display:flex;gap:10px;margin-top:10px}
+.thumbs img{width:70px;height:60px;object-fit:cover;border-radius:6px;cursor:pointer}
 
-.thumbs img{
-width:70px;
-height:60px;
-object-fit:cover;
-cursor:pointer;
-border-radius:6px;
-}
-
-.price-box{
-font-size:24px;
-margin:15px 0;
-color:#cfffff;
-}
+.price-box{font-size:26px;margin:18px 0;color:#bfffff}
 
 input,select{
 width:100%;
@@ -157,17 +149,7 @@ color:white;
 margin-top:8px;
 }
 
-.cart-box{
-background:#082c34;
-padding:20px;
-border-radius:10px;
-}
-
-.checkout-grid{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:30px;
-}
+.checkout-grid{display:grid;grid-template-columns:2fr 1fr;gap:30px}
 
 .summary{
 background:#082c34;
@@ -175,9 +157,30 @@ padding:20px;
 border-radius:10px;
 }
 
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+text-align:center;
+}
+
+.feature{
+background:#082c34;
+padding:25px;
+border-radius:10px;
+border:1px solid var(--secondary);
+}
+
+.map{
+height:350px;
+border-radius:10px;
+overflow:hidden;
+border:2px solid var(--secondary);
+}
+
 .footer{
 text-align:center;
-padding:30px;
+padding:40px;
 margin-top:40px;
 border-top:1px solid var(--secondary);
 color:#cfffff;
@@ -201,23 +204,26 @@ color:#cfffff;
 </header>
 
 <section id="home" class="hero">
-<h1>Fresh Fish From River & Sea</h1>
-<p>Collected directly from fishermen across Bangladesh and delivered fresh to your home.</p>
+<h1>Fresh River & Sea Fish Delivered</h1>
+<p>Collected directly from fishermen across Bangladesh.</p>
 <div class="slider" id="sliderText">Fresh fish collected from 10+ districts</div>
 </section>
 
 <section class="section">
-<h2 class="section-title">Why Choose The River Run</h2>
-<div class="categories">
-<div class="card">Fresh From Fishermen</div>
-<div class="card">1-3 Day Delivery</div>
-<div class="card">Ready To Cook Service</div>
-<div class="card">Cash On Delivery</div>
+<h2 class="section-title">Freshness Guarantee</h2>
+
+<div class="features">
+<div class="feature">🐟 Direct From Fishermen</div>
+<div class="feature">🚚 Delivery Within 1-3 Days</div>
+<div class="feature">❄ Ice Box Packaging</div>
+<div class="feature">💰 Cash On Delivery</div>
 </div>
+
 </section>
 
 <section id="categories" class="section hidden">
 <h2 class="section-title">Fish Categories</h2>
+
 <div class="categories">
 <div class="card" onclick="loadCategory('river')">River Fish</div>
 <div class="card" onclick="loadCategory('sea')">Sea Fish</div>
@@ -225,6 +231,7 @@ color:#cfffff;
 <div class="card" onclick="loadCategory('beel')">Canal / Beel Fish</div>
 <div class="card" onclick="loadCategory('hilsa')">Hilsa</div>
 </div>
+
 </section>
 
 <section id="products" class="section hidden">
@@ -236,11 +243,12 @@ color:#cfffff;
 <div class="product-layout">
 
 <div class="product-gallery">
-<img id="mainImage" src="https://images.unsplash.com/photo-1611175694983-4f6f1c3b6f16">
+<img id="mainImage" src="https://upload.wikimedia.org/wikipedia/commons/3/32/Catla_catla.jpg">
+
 <div class="thumbs">
-<img src="https://images.unsplash.com/photo-1611175694983-4f6f1c3b6f16" onclick="changeImage(this)">
-<img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f" onclick="changeImage(this)">
-<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" onclick="changeImage(this)">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Catla_catla.jpg" onclick="changeImage(this)">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Rohu_fish.jpg" onclick="changeImage(this)">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Hilsa_fish.jpg" onclick="changeImage(this)">
 </div>
 </div>
 
@@ -250,8 +258,8 @@ color:#cfffff;
 <p>Select Size Range</p>
 <select id="sizeRange" onchange="loadWeightOptions()">
 <option value="">Select Range</option>
-<option value="2-3" data-price="600">2‑3 KG</option>
-<option value="3-5" data-price="800">3‑5 KG</option>
+<option value="2-3" data-price="600">2-3 KG</option>
+<option value="3-5" data-price="800">3-5 KG</option>
 <option value="5+" data-price="1000">5+ KG</option>
 </select>
 
@@ -269,7 +277,7 @@ color:#cfffff;
 
 <section id="cart" class="section hidden">
 <h2 class="section-title">Your Cart</h2>
-<div class="cart-box" id="cartItems"></div>
+<div id="cartItems"></div>
 <h3 id="cartTotal"></h3>
 <button onclick="show('checkout')">Checkout</button>
 </section>
@@ -280,6 +288,7 @@ color:#cfffff;
 <div class="checkout-grid">
 
 <div>
+
 <p>Name</p>
 <input placeholder="Enter your name">
 
@@ -296,6 +305,7 @@ color:#cfffff;
 </select>
 
 <button onclick="confirmOrder()">Confirm Order</button>
+
 </div>
 
 <div class="summary">
@@ -306,6 +316,14 @@ color:#cfffff;
 </div>
 
 </div>
+
+</section>
+
+<section class="section">
+<h2 class="section-title">Fish Source Map</h2>
+<div class="map">
+<iframe width="100%" height="100%" frameborder="0" src="https://maps.google.com/maps?q=bangladesh&t=&z=6&ie=UTF8&iwloc=&output=embed"></iframe>
+</div>
 </section>
 
 <div class="footer">© The River Run Fresh Fish Delivery</div>
@@ -314,7 +332,7 @@ color:#cfffff;
 
 const sliderMessages=[
 "Fresh fish collected from 10+ districts",
-"Delivery within 1‑3 days",
+"Delivery within 1-3 days",
 "Ready to cook service available",
 "Cash on delivery available"
 ]
@@ -331,12 +349,17 @@ let selectedFish=null
 let selectedPrice=0
 let selectedWeight=0
 
+function generateOrderID(){
+return 'RR-'+Math.floor(Math.random()*1000000)
+}
+
 const fishImages={
-Rui:"https://images.unsplash.com/photo-1544947950-fa07a98d237f",
-Boal:"https://images.unsplash.com/photo-1504674900247-0877df9cc836",
-Aar:"https://images.unsplash.com/photo-1611175694983-4f6f1c3b6f16",
-Katla:"https://images.unsplash.com/photo-1544947950-fa07a98d237f",
-Chatna:"https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+Rui:"https://upload.wikimedia.org/wikipedia/commons/2/2e/Rohu_fish.jpg",
+Boal:"https://upload.wikimedia.org/wikipedia/commons/0/0f/Wallago_attu.jpg",
+Aar:"https://upload.wikimedia.org/wikipedia/commons/e/e6/Aorichthys_aor.jpg",
+Katla:"https://upload.wikimedia.org/wikipedia/commons/3/32/Catla_catla.jpg",
+Chatna:"https://upload.wikimedia.org/wikipedia/commons/4/4e/Channa_striata.jpg",
+"Padma Hilsa":"https://upload.wikimedia.org/wikipedia/commons/5/5b/Hilsa_fish.jpg"
 }
 
 const fish={
@@ -354,12 +377,13 @@ document.getElementById(id).classList.remove('hidden')
 
 function loadCategory(cat){
 show('products')
-let list=document.getElementById('productList')
-list.innerHTML=""
 productTitle.innerText=cat.toUpperCase()+" Fish"
 
+let list=document.getElementById('productList')
+list.innerHTML=""
+
 fish[cat].forEach(name=>{
-let img=fishImages[name]||"https://images.unsplash.com/photo-1611175694983-4f6f1c3b6f16"
+let img=fishImages[name]||"https://upload.wikimedia.org/wikipedia/commons/3/32/Catla_catla.jpg"
 
 let div=document.createElement('div')
 div.className='product'
@@ -382,24 +406,20 @@ fishName.innerText=name
 show('productPage')
 }
 
-function changeImage(el){
-mainImage.src=el.src
-}
+function changeImage(el){mainImage.src=el.src}
 
 function loadWeightOptions(){
 let select=document.getElementById('weightSelect')
 select.innerHTML=""
 
 let range=document.getElementById('sizeRange')
-let price=range.options[range.selectedIndex].dataset.price
-selectedPrice=parseInt(price)
+selectedPrice=parseInt(range.options[range.selectedIndex].dataset.price)
 
 let values=[3,3.5,4,4.5,5]
-
 values.forEach(v=>{
 let opt=document.createElement('option')
 opt.value=v
-opt.text=v+" KG"
+opt.text=v+' KG'
 select.appendChild(opt)
 })
 }
@@ -408,32 +428,27 @@ function calculatePrice(){
 let weight=parseFloat(weightSelect.value)
 selectedWeight=weight
 let total=weight*selectedPrice
-priceDisplay.innerText="Total Price: ৳"+total
+priceDisplay.innerText='Total Price: ৳'+total
 }
 
 function addSelectedFish(){
 let total=selectedWeight*selectedPrice
 cart.push({name:selectedFish,kg:selectedWeight,price:total})
 cartCount.innerText=cart.length
-alert("Added to cart")
 }
 
 function showCart(){
 show('cart')
 let items=document.getElementById('cartItems')
-let summary=document.getElementById('summaryItems')
 items.innerHTML=""
-summary.innerHTML=""
-
 let total=0
+
 cart.forEach(i=>{
 items.innerHTML+=`<p>${i.name} (${i.kg}kg) - ৳${i.price}</p>`
-summary.innerHTML+=`<p>${i.name} (${i.kg}kg) - ৳${i.price}</p>`
 total+=i.price
 })
 
-cartTotal.innerText="Subtotal: ৳"+total
-finalTotal.innerText=total+120
+cartTotal.innerText='Subtotal: ৳'+total
 }
 
 function updateDelivery(){
@@ -442,11 +457,26 @@ deliveryCharge.innerText=delivery
 
 let subtotal=0
 cart.forEach(i=>subtotal+=i.price)
+
 finalTotal.innerText=subtotal+delivery
 }
 
 function confirmOrder(){
-alert("Order placed! Our team will call you.")
+
+let orderID=generateOrderID()
+
+let order={
+orderID:orderID,
+items:cart,
+time:new Date()
+}
+
+let orders=JSON.parse(localStorage.getItem('orders')||'[]')
+orders.push(order)
+localStorage.setItem('orders',JSON.stringify(orders))
+
+alert('Order Placed! ID: '+orderID)
+
 cart=[]
 cartCount.innerText=0
 show('home')
