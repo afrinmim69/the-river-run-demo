@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The River Run</title>
+
 <style>
 :root{
 --primary:#0f4c5c;
@@ -13,22 +14,24 @@
 
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial,Helvetica,sans-serif;
 background:var(--primary);
 color:var(--text);
 }
 
 header{
-background:var(--primary);
-padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:18px 40px;
 border-bottom:2px solid var(--secondary);
+position:sticky;
+top:0;
+background:var(--primary);
 }
 
 nav a{
-margin:0 10px;
+margin:0 12px;
 text-decoration:none;
 color:white;
 font-weight:bold;
@@ -45,17 +48,32 @@ cursor:pointer;
 }
 
 .hero{
-background:var(--primary);
-color:white;
-padding:80px 40px;
+padding:80px 20px;
+text-align:center;
+max-width:1000px;
+margin:auto;
 }
 
 .hero h1{
-font-size:40px;
+font-size:42px;
+margin-bottom:10px;
+}
+
+.slider{
+margin-top:30px;
+font-size:20px;
+color:#cfffff;
 }
 
 .section{
-padding:40px;
+padding:50px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.section-title{
+font-size:28px;
+margin-bottom:20px;
 }
 
 .categories{
@@ -65,37 +83,91 @@ gap:20px;
 }
 
 .card{
-background:#0c3e4a;
-padding:20px;
-border-radius:10px;
+background:#0b3b45;
+padding:25px;
+border-radius:12px;
 border:1px solid var(--secondary);
+cursor:pointer;
+text-align:center;
+transition:.25s;
+}
+
+.card:hover{
+transform:scale(1.04);
 }
 
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
 }
 
-input,select,textarea{
+.product{
+background:#0b3b45;
+border-radius:12px;
+border:1px solid var(--secondary);
+overflow:hidden;
+}
+
+.product img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.product-body{
+padding:18px;
+text-align:center;
+}
+
+.variant button{
+margin:6px;
+}
+
+.product-page{
+max-width:900px;
+margin:auto;
+}
+
+.price-box{
+margin:20px 0;
+font-size:22px;
+color:#cfffff;
+}
+
+.cart-box{
+background:#082c34;
+padding:25px;
+border-radius:10px;
+}
+
+.about{
+background:#082c34;
+padding:40px;
+border-radius:10px;
+line-height:1.6;
+}
+
+.footer{
+text-align:center;
+padding:30px;
+margin-top:40px;
+border-top:1px solid var(--secondary);
+color:#cfffff;
+}
+
+input,select{
 width:100%;
 padding:12px;
-margin-top:6px;
-margin-bottom:18px;
+margin:10px 0 18px 0;
 border-radius:6px;
 border:1px solid var(--secondary);
 background:#08313a;
 color:white;
 }
 
-label{
-font-weight:bold;
-font-size:14px;
-}
+.hidden{display:none}
 
-.hidden{
-display:none
-}
 </style>
 </head>
 
@@ -105,123 +177,266 @@ display:none
 <h2>The River Run</h2>
 <nav>
 <a href="#" onclick="show('home')">Home</a>
-<a href="#" onclick="show('categories')">Categories</a>
+<a href="#" onclick="show('categories')">Fish</a>
 <a href="#" onclick="showCart()">Cart (<span id="cartCount">0</span>)</a>
 </nav>
 <button onclick="show('categories')">Order Now</button>
 </header>
 
 <section id="home" class="hero">
-<h1>Fresh Fish Delivered Across Bangladesh</h1>
-<p>Collected from rivers, seas, canals and beels.</p>
-<button onclick="show('categories')">Browse Fish</button>
-</section>
+<h1>Fresh Fish From River & Sea</h1>
+<p>Collected directly from fishermen across Bangladesh and delivered fresh to your home.</p>
 
-<section id="categories" class="section hidden">
-<h2>Fish Categories</h2>
-<div class="categories">
-<div class="card" onclick="loadCategory('sea')">Sea Fish</div>
-<div class="card" onclick="loadCategory('hilsa')">Hilsa Fish</div>
-<div class="card" onclick="loadCategory('river')">River Fish</div>
-<div class="card" onclick="loadCategory('shrimp')">Shrimp</div>
-<div class="card" onclick="loadCategory('beel')">Canal / Beel Fish</div>
+<div class="slider" id="sliderText">
+Fresh fish collected from 10+ districts
 </div>
 </section>
 
+<section class="section">
+<h2 class="section-title">Why Choose The River Run</h2>
+
+<div class="categories">
+<div class="card">Fresh From Fishermen</div>
+<div class="card">1-3 Day Delivery</div>
+<div class="card">Ready To Cook Service</div>
+<div class="card">Cash On Delivery</div>
+</div>
+
+</section>
+
+<section id="categories" class="section hidden">
+<h2 class="section-title">Fish Categories</h2>
+
+<div class="categories">
+<div class="card" onclick="loadCategory('river')">River Fish</div>
+<div class="card" onclick="loadCategory('sea')">Sea Fish</div>
+<div class="card" onclick="loadCategory('shrimp')">Shrimp</div>
+<div class="card" onclick="loadCategory('beel')">Canal / Beel Fish</div>
+<div class="card" onclick="loadCategory('hilsa')">Hilsa</div>
+</div>
+
+</section>
+
 <section id="products" class="section hidden">
-<h2 id="productTitle"></h2>
+<h2 class="section-title" id="productTitle"></h2>
 <div class="products" id="productList"></div>
 </section>
 
+<section id="productPage" class="section hidden">
+<div class="product-page">
+<h2 id="fishName"></h2>
+
+<img id="fishImage" src="https://images.unsplash.com/photo-1604908176997-4317f9c2cdb2" style="width:100%;border-radius:10px;margin:20px 0">
+
+<p>Select Fish Size</p>
+
+<div class="variant">
+<button onclick="selectVariant(600,'2-3kg')">2-3 KG</button>
+<button onclick="selectVariant(800,'3-4kg')">3-4 KG</button>
+<button onclick="selectVariant(1000,'4kg+')">4+ KG</button>
+</div>
+
+<div class="price-box" id="priceDisplay"></div>
+
+<button onclick="addSelectedFish()">Add To Cart</button>
+
+</div>
+</section>
+
 <section id="cart" class="section hidden">
-<h2>Your Cart</h2>
-<div id="cartItems"></div>
+<h2 class="section-title">Your Cart</h2>
+
+<div class="cart-box" id="cartItems"></div>
+
 <h3 id="cartTotal"></h3>
-<button onclick="show('checkout')">Proceed to Checkout</button>
+
+<button onclick="show('checkout')">Checkout</button>
+
 </section>
 
 <section id="checkout" class="section hidden">
-<h2>Checkout</h2>
+<h2 class="section-title">Checkout</h2>
 
-<label>Enter Your Full Name</label>
-<input placeholder="Enter your name">
+<p>Enter Your Name</p>
+<input placeholder="Your Name">
 
-<label>Enter Your Phone Number</label>
-<input placeholder="Enter your phone number">
+<p>Enter Phone Number</p>
+<input placeholder="Phone Number">
 
-<label>Enter Delivery Address</label>
-<input placeholder="Enter your full address">
+<p>Enter Address</p>
+<input placeholder="Delivery Address">
 
-<label>Select Delivery Location</label>
+<p>Select Location</p>
 <select>
 <option>Dhaka</option>
 <option>Outside Dhaka</option>
 </select>
 
-<label>Ready To Cook Service</label>
+<p>Ready To Cook</p>
 <select>
 <option>Yes</option>
 <option>No</option>
 </select>
 
-<label>Special Instructions (Optional)</label>
-<textarea placeholder="Any special requirement for your order"></textarea>
-
 <button onclick="confirmOrder()">Confirm Order</button>
 </section>
 
+<section class="section">
+<div class="about">
+<h2>About The River Run</h2>
+
+<p>
+The River Run sources naturally caught fish from rivers, seas, canals and beels across Bangladesh. We work directly with local fishermen to bring fresh fish to urban homes.
+</p>
+
+<p>
+Our goal is simple — deliver clean, fresh and authentic fish to your family with reliable delivery and honest sourcing.
+</p>
+
+</div>
+</section>
+
+<div class="footer">
+© The River Run — Fresh Fish Delivery
+</div>
+
 <script>
+
+const sliderMessages=[
+"Fresh fish collected from 10+ districts",
+"Delivery within 1-3 days",
+"Ready to cook service available",
+"Cash on delivery available"
+]
+
+let slideIndex=0
+
+setInterval(()=>{
+slideIndex++
+if(slideIndex>=sliderMessages.length) slideIndex=0
+
+document.getElementById('sliderText').innerText=sliderMessages[slideIndex]
+},2500)
+
 let cart=[]
+let selectedFish=null
+let selectedPrice=0
+let selectedSize=""
 
 const fish={
-sea:[{name:"Red Snapper",price:900},{name:"Rupchanda",price:850},{name:"Black Pomfret",price:880},{name:"Lobster",price:1500}],
-river:[{name:"Rui",price:400},{name:"Boal",price:700},{name:"Aar",price:750},{name:"Pangash",price:350}],
-beel:[{name:"Koi",price:500},{name:"Shol",price:650},{name:"Taki",price:420},{name:"Puti",price:300}],
-hilsa:[{name:"Padma Hilsa",price:1600},{name:"Meghna Hilsa",price:1500}],
-shrimp:[{name:"Golda Chingri",price:1200},{name:"Bagda Chingri",price:1000}]
+river:["Rui","Boal","Aar","Katla","Chatna"],
+sea:["Red Coral","Rupchanda","Black Pomfret","Sea Fish"],
+shrimp:["Golda","Bagda","Horina","River Shrimp"],
+beel:["Shol","Koi","Shing","Taki"],
+hilsa:["Padma Hilsa"]
 }
 
 function show(id){
+
 document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'))
+
 document.getElementById(id).classList.remove('hidden')
+
 }
 
 function loadCategory(cat){
+
 show('products')
+
 let list=document.getElementById('productList')
+
 list.innerHTML=""
+
 document.getElementById('productTitle').innerText=cat.toUpperCase()+" Fish"
-fish[cat].forEach(p=>{
+
+fish[cat].forEach(name=>{
+
 let div=document.createElement('div')
-div.className='card'
-div.innerHTML=`<h3>${p.name}</h3><p>৳${p.price}/kg</p><button onclick="addCart('${p.name}',${p.price})">Add to Cart</button>`
+
+div.className='product'
+
+let img="https://images.unsplash.com/photo-1604908176997-4317f9c2cdb2"
+
+
+div.innerHTML=`
+<img src="${img}">
+<div class="product-body">
+<h3>${name}</h3>
+<button onclick="openFish('${name}')">View Fish</button>
+</div>
+`
+
 list.appendChild(div)
+
 })
+
 }
 
-function addCart(name,price){
-cart.push({name,price})
+function openFish(name){
+
+selectedFish=name
+
+show('productPage')
+
+document.getElementById('fishName').innerText=name
+
+}
+
+function selectVariant(price,size){
+
+selectedPrice=price
+selectedSize=size
+
+
+document.getElementById('priceDisplay').innerText="Price: ৳"+price+" per KG"
+
+}
+
+function addSelectedFish(){
+
+cart.push({name:selectedFish,size:selectedSize,price:selectedPrice})
+
 document.getElementById('cartCount').innerText=cart.length
+
+alert("Added to cart")
+
 }
 
 function showCart(){
+
 show('cart')
+
 let items=document.getElementById('cartItems')
+
 items.innerHTML=""
+
 let total=0
+
 cart.forEach(i=>{
-items.innerHTML+=`<p>${i.name} - ৳${i.price}</p>`
+
+items.innerHTML+=`<p>${i.name} (${i.size}) - ৳${i.price}</p>`
+
 total+=i.price
+
 })
+
+
 document.getElementById('cartTotal').innerText="Total: ৳"+total
+
 }
 
 function confirmOrder(){
-alert("Order placed! Our team will call you to confirm your order.")
+
+alert("Order placed! Our team will call you soon.")
+
 cart=[]
+
 document.getElementById('cartCount').innerText=0
+
 show('home')
+
 }
+
 </script>
 
 </body>
