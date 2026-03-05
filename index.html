@@ -1,10 +1,10 @@
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>The River Run – Fresh Fish Delivery</title>
 
 <style>
@@ -20,9 +20,9 @@
 
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial,Helvetica,sans-serif;
 background:var(--primary);
-color:white;
+color:white
 }
 
 header{
@@ -31,13 +31,17 @@ justify-content:space-between;
 align-items:center;
 padding:18px 40px;
 border-bottom:2px solid var(--secondary);
+position:sticky;
+top:0;
+background:var(--primary);
+z-index:10
 }
 
 nav a{
 margin:0 12px;
 color:white;
 text-decoration:none;
-font-weight:bold;
+font-weight:bold
 }
 
 button{
@@ -47,53 +51,117 @@ padding:10px 18px;
 border-radius:6px;
 color:white;
 font-weight:bold;
-cursor:pointer;
+cursor:pointer
+}
+
+.hero{
+padding:100px 20px;
+text-align:center;
+background:linear-gradient(180deg,#0f4c5c,#0b3b45)
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:10px
+}
+
+.hero p{
+font-size:18px;
+opacity:.9
+}
+
+.slider{
+max-width:900px;
+margin:40px auto
+}
+
+.slider img{
+width:100%;
+height:420px;
+object-fit:cover;
+border-radius:10px
 }
 
 .section{
-padding:60px 20px;
+padding:70px 20px;
 max-width:1200px;
-margin:auto;
+margin:auto
+}
+
+.section-title{
+text-align:center;
+font-size:32px;
+margin-bottom:40px
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px
+}
+
+.feature{
+background:var(--card);
+padding:30px;
+border-radius:10px;
+border:1px solid var(--secondary);
+text-align:center
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px
+}
+
+.card{
+background:var(--dark);
+padding:30px;
+border-radius:12px;
+border:1px solid var(--secondary);
+text-align:center;
+cursor:pointer
 }
 
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px
 }
 
 .product{
 background:var(--dark);
-border-radius:10px;
+border-radius:12px;
 overflow:hidden;
-border:1px solid var(--secondary);
+border:1px solid var(--secondary)
 }
 
 .product img{
 width:100%;
-height:200px;
-object-fit:cover;
+height:220px;
+object-fit:cover
 }
 
 .product-body{
 padding:15px;
-text-align:center;
+text-align:center
 }
 
-.hidden{
-display:none;
-}
-
-.checkout-grid{
+.product-layout{
 display:grid;
-grid-template-columns:2fr 1fr;
-gap:30px;
+grid-template-columns:1fr 1fr;
+gap:40px
 }
 
-.summary{
-background:var(--card);
-padding:20px;
-border-radius:10px;
+.product-gallery img{
+width:100%;
+border-radius:10px
+}
+
+.price-box{
+font-size:24px;
+margin:15px 0;
+color:#cfffff
 }
 
 input,select,textarea{
@@ -103,18 +171,40 @@ border-radius:6px;
 border:1px solid var(--secondary);
 background:#08313a;
 color:white;
-margin-top:10px;
+margin-top:8px
+}
+
+.checkout-grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:30px
+}
+
+.summary{
+background:var(--card);
+padding:20px;
+border-radius:10px
 }
 
 .timeline{
 display:flex;
 justify-content:space-between;
-margin-top:20px;
+margin-top:30px
 }
 
 .timeline div{
 flex:1;
+text-align:center
+}
+
+.hidden{
+display:none
+}
+
+.footer{
 text-align:center;
+padding:40px;
+border-top:1px solid var(--secondary)
 }
 
 </style>
@@ -123,134 +213,152 @@ text-align:center;
 <body>
 
 <header>
-
 <h2>The River Run</h2>
 
 <nav>
-<a onclick="show('home')">Home</a>
-<a onclick="show('categories')">Fish</a>
-<a onclick="showCart()">Cart (<span id="cartCount">0</span>)</a>
-<a onclick="show('track')">Track Order</a>
+<a href="#" onclick="show('home')">Home</a>
+<a href="#" onclick="show('categories')">Fish</a>
+<a href="#" onclick="showCart()">Cart (<span id="cartCount">0</span>)</a>
+<a href="#" onclick="show('track')">Track Order</a>
 </nav>
 
 <button onclick="show('categories')">Order Fish</button>
-
 </header>
 
-<section id="home" class="section">
+<section id="home" class="hero">
 
-<h1>Fresh Fish From Fishermen</h1>
+<h1>Fresh River & Sea Fish Delivered</h1>
+<p>Collected directly from fishermen across Bangladesh.</p>
 
-<p>Direct from Padma & Meghna river fishermen</p>
+<div class="slider">
+<img id="heroSlider" src="images/slider1.png">
+</div>
+
+<button onclick="show('categories')">Browse Fish</button>
 
 </section>
+
+
+<section class="section">
+
+<h2 class="section-title">Why Choose The River Run</h2>
+
+<div class="features">
+<div class="feature">🐟 Direct From Fishermen</div>
+<div class="feature">❄ Ice Box Preservation</div>
+<div class="feature">🚚 Delivery Within 1-3 Days</div>
+<div class="feature">💰 Cash On Delivery</div>
+</div>
+
+</section>
+
 
 <section id="categories" class="section hidden">
 
-<h2>Fish Categories</h2>
+<h2 class="section-title">Fish Categories</h2>
 
-<div class="products">
+<div class="categories">
 
-<div class="product">
-<div class="product-body">
-<h3>River Fish</h3>
-<button onclick="loadCategory('river')">View</button>
-</div>
-</div>
-
-<div class="product">
-<div class="product-body">
-<h3>Sea Fish</h3>
-<button onclick="loadCategory('sea')">View</button>
-</div>
-</div>
-
-<div class="product">
-<div class="product-body">
-<h3>Shrimp</h3>
-<button onclick="loadCategory('shrimp')">View</button>
-</div>
-</div>
+<div class="card" onclick="loadCategory('river')">River Fish</div>
+<div class="card" onclick="loadCategory('sea')">Sea Fish</div>
+<div class="card" onclick="loadCategory('shrimp')">Shrimp</div>
+<div class="card" onclick="loadCategory('beel')">Beel Fish</div>
+<div class="card" onclick="loadCategory('hilsa')">Hilsa</div>
 
 </div>
 
 </section>
+
 
 <section id="products" class="section hidden">
 
-<h2 id="productTitle"></h2>
+<h2 class="section-title" id="productTitle"></h2>
 
-<div id="productList" class="products"></div>
+<div class="products" id="productList"></div>
 
 </section>
 
+
 <section id="productPage" class="section hidden">
 
+<div class="product-layout">
+
+<div class="product-gallery">
+<img id="mainImage">
+</div>
+
+<div>
+
 <h2 id="fishName"></h2>
-
-<img id="mainImage" width="300">
-
-<div id="fishSource"></div>
-
-<div id="fishDescription"></div>
-
-<div id="fishNutrition"></div>
 
 <p>Select Size Range</p>
 
 <select id="sizeRange" onchange="loadWeightOptions()">
-<option value="">Select</option>
+<option value="">Select Range</option>
 <option data-price="600">2-3 KG</option>
 <option data-price="800">3-5 KG</option>
 <option data-price="1000">5+ KG</option>
 </select>
 
-<p>Select Weight</p>
+<p>Select Exact Weight</p>
 
 <select id="weightSelect" onchange="calculatePrice()"></select>
 
-<h3 id="priceDisplay"></h3>
+<div class="price-box" id="priceDisplay"></div>
 
 <button onclick="addSelectedFish()">Add To Cart</button>
 
+</div>
+
+</div>
+
 </section>
+
 
 <section id="cart" class="section hidden">
 
-<h2>Your Cart</h2>
+<h2 class="section-title">Your Cart</h2>
 
 <div id="cartItems"></div>
 
 <h3 id="cartTotal"></h3>
 
-<button onclick="showCheckout()">Checkout</button>
+<button onclick="show('checkout')">Checkout</button>
 
 </section>
 
+
 <section id="checkout" class="section hidden">
 
-<h2>Checkout</h2>
+<h2 class="section-title">Checkout</h2>
 
 <div class="checkout-grid">
 
 <div>
 
-<input id="custName" placeholder="Enter your name">
+<label>Full Name</label>
+<input id="custName">
 
-<input id="custPhone" placeholder="Enter phone number">
+<label>Phone Number</label>
+<input id="custPhone">
 
-<input id="custAddress" placeholder="Enter delivery address">
+<label>Address</label>
+<input id="custAddress">
+
+<label>Location</label>
 
 <select id="locationSelect" onchange="updateDelivery()">
 <option value="120">Dhaka Delivery 120</option>
 <option value="500">Outside Dhaka Delivery 500</option>
 </select>
 
-<textarea placeholder="Special instructions"></textarea>
+<label>Special Instructions</label>
+<textarea id="custNote"></textarea>
 
 <button onclick="confirmOrder()">Confirm Order</button>
 
 </div>
+
 
 <div class="summary">
 
@@ -268,19 +376,23 @@ text-align:center;
 
 </section>
 
+
 <section id="orderSuccess" class="section hidden">
 
-<h2>Order Confirmed</h2>
+<h2 class="section-title">Order Confirmed</h2>
 
 <h3 id="orderID"></h3>
+
+<p>Your order has been received.</p>
 
 <button onclick="show('home')">Back Home</button>
 
 </section>
 
+
 <section id="track" class="section hidden">
 
-<h2>Track Order</h2>
+<h2 class="section-title">Track Order</h2>
 
 <input id="trackInput">
 
@@ -290,20 +402,20 @@ text-align:center;
 
 </section>
 
+
+<div class="footer">
+© The River Run
+</div>
+
+
 <script>
 
 const fish={
-river:["rui","katla","boal"],
-sea:["rupchanda"],
-shrimp:["golda"],
-}
-
-const fishInfo={
-rui:{source:"Padma River",desc:"রুই মাছ বাংলাদেশের জনপ্রিয় নদীর মাছ",nutrition:"উচ্চ প্রোটিন"},
-katla:{source:"Meghna River",desc:"কাতলা বড় দেশি মাছ",nutrition:"ক্যালসিয়াম সমৃদ্ধ"},
-boal:{source:"Padma River",desc:"বোয়াল নরম মাংসের মাছ",nutrition:"উচ্চ প্রোটিন"},
-rupchanda:{source:"Sea",desc:"রূপচাঁদা সমুদ্রের মাছ",nutrition:"Omega 3"},
-golda:{source:"River",desc:"গলদা চিংড়ি সুস্বাদু",nutrition:"Protein rich"}
+river:["rui","katla","boal","ayer","pangash"],
+sea:["rupchanda","coral","kala chanda"],
+shrimp:["golda","bagda","horina","nodir chingri"],
+beel:["shoal","shing","meni","taki"],
+hilsa:["hilsa"]
 }
 
 let cart=[]
@@ -312,86 +424,81 @@ let selectedPrice=0
 let selectedWeight=0
 
 function show(id){
-
 document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"))
-
 document.getElementById(id).classList.remove("hidden")
-
 }
 
 function loadCategory(cat){
 
 show("products")
 
-productTitle.innerText=cat
+let list=document.getElementById("productList")
+list.innerHTML=""
 
-productList.innerHTML=""
+productTitle.innerText=cat.toUpperCase()+" Fish"
 
 fish[cat].forEach(name=>{
 
 let img="images/"+name+".jpg"
 
-productList.innerHTML+=`
-<div class="product">
+let div=document.createElement("div")
+div.className="product"
+
+div.innerHTML=`
 <img src="${img}">
 <div class="product-body">
 <h3>${name}</h3>
-<button onclick="openFish('${name}','${img}')">View</button>
-</div>
+<button onclick="openFish('${name}','${img}')">View Fish</button>
 </div>
 `
+
+list.appendChild(div)
 
 })
 
 }
 
 function openFish(name,img){
-
 selectedFish=name
-
 mainImage.src=img
-
 fishName.innerText=name
-
-let key=name.toLowerCase()
-
-fishSource.innerText="Source: "+fishInfo[key].source
-
-fishDescription.innerText=fishInfo[key].desc
-
-fishNutrition.innerText=fishInfo[key].nutrition
-
 show("productPage")
-
 }
 
 function loadWeightOptions(){
 
-let select=weightSelect
-
+let select=document.getElementById("weightSelect")
 select.innerHTML=""
 
-let range=sizeRange.options[sizeRange.selectedIndex].text
+let range=document.getElementById("sizeRange")
+let text=range.options[range.selectedIndex].text
 
-selectedPrice=parseInt(sizeRange.options[sizeRange.selectedIndex].dataset.price)
+selectedPrice=parseInt(range.options[range.selectedIndex].dataset.price)
 
 let weights=[]
 
-if(range=="2-3 KG")weights=[2,2.5,3]
-else if(range=="3-5 KG")weights=[3,3.5,4,4.5,5]
-else weights=[5,5.5,6]
+if(text=="2-3 KG")weights=[2,2.5,3]
+else if(text=="3-5 KG")weights=[3,3.5,4,4.5,5]
+else if(text=="5+ KG")weights=[5,5.5,6,6.5,7]
 
-weights.forEach(w=>{
-select.innerHTML+=`<option value="${w}">${w} KG</option>`
+weights.forEach(v=>{
+let opt=document.createElement("option")
+opt.value=v
+opt.text=v+" KG"
+select.appendChild(opt)
 })
 
 }
 
 function calculatePrice(){
 
-selectedWeight=parseFloat(weightSelect.value)
+let weight=parseFloat(document.getElementById("weightSelect").value)
 
-priceDisplay.innerText="Price: ৳"+(selectedWeight*selectedPrice)
+selectedWeight=weight
+
+let total=weight*selectedPrice
+
+priceDisplay.innerText="Total Price: ৳"+total
 
 }
 
@@ -409,30 +516,41 @@ function showCart(){
 
 show("cart")
 
-cartItems.innerHTML=""
+let items=document.getElementById("cartItems")
+let summary=document.getElementById("summaryItems")
+
+items.innerHTML=""
+summary.innerHTML=""
 
 let total=0
 
-cart.forEach((item,i)=>{
+cart.forEach((i,index)=>{
 
-cartItems.innerHTML+=`
+items.innerHTML+=`
+<div style="display:flex;justify-content:space-between">
+<span>${i.name} (${i.kg}kg)</span>
 <div>
-${item.name} ${item.kg}kg - ৳${item.price}
-<button onclick="removeItem(${i})">Remove</button>
+<span>৳${i.price}</span>
+<button onclick="removeItem(${index})">Remove</button>
+</div>
 </div>
 `
 
-total+=item.price
+summary.innerHTML+=`<p>${i.name} (${i.kg}kg) – ৳${i.price}</p>`
+
+total+=i.price
 
 })
 
 cartTotal.innerText="Subtotal: ৳"+total
 
+finalTotal.innerText=total+120
+
 }
 
-function removeItem(i){
+function removeItem(index){
 
-cart.splice(i,1)
+cart.splice(index,1)
 
 cartCount.innerText=cart.length
 
@@ -440,39 +558,22 @@ showCart()
 
 }
 
-function showCheckout(){
-
-show("checkout")
-
-summaryItems.innerHTML=""
-
-let subtotal=0
-
-cart.forEach(i=>{
-summaryItems.innerHTML+=`<p>${i.name} ${i.kg}kg - ৳${i.price}</p>`
-subtotal+=i.price
-})
-
-deliveryCharge.innerText=locationSelect.value
-
-finalTotal.innerText=subtotal+parseInt(locationSelect.value)
-
-}
-
 function updateDelivery(){
+
+let delivery=parseInt(locationSelect.value)
+
+deliveryCharge.innerText=delivery
 
 let subtotal=0
 
 cart.forEach(i=>subtotal+=i.price)
 
-finalTotal.innerText=subtotal+parseInt(locationSelect.value)
+finalTotal.innerText=subtotal+delivery
 
 }
 
 function generateOrderID(){
-
 return "RR-"+Math.floor(Math.random()*100000)
-
 }
 
 function confirmOrder(){
@@ -482,7 +583,6 @@ let id=generateOrderID()
 orderID.innerText="Order ID: "+id
 
 cart=[]
-
 cartCount.innerText=0
 
 show("orderSuccess")
@@ -494,17 +594,34 @@ function trackOrder(){
 let id=trackInput.value
 
 trackResult.innerHTML=`
-<h3>${id}</h3>
+
+<h3>Order ID: ${id}</h3>
+
 <div class="timeline">
-<div>Order Placed</div>
-<div>Fish Sourced</div>
-<div>Packed</div>
-<div>Out for Delivery</div>
-<div>Delivered</div>
+
+<div>🧾 Order Placed</div>
+<div>🐟 Fish Sourced</div>
+<div>📦 Packed</div>
+<div>🚚 Out For Delivery</div>
+<div>✅ Delivered</div>
+
 </div>
+
 `
 
 }
+
+const sliderImages=["images/slider1.png","images/slider2.png","images/slider3.jpg"]
+
+let slide=0
+
+setInterval(()=>{
+
+slide=(slide+1)%sliderImages.length
+
+heroSlider.src=sliderImages[slide]
+
+},3000)
 
 </script>
 
