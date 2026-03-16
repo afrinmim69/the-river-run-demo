@@ -152,7 +152,6 @@ button:hover {
     margin-bottom: 20px;
 }
 
-
 /* --- THE ANIMATED SUPPLY CHAIN --- */
 .supply-chain-section {
   padding: 80px 20px;
@@ -244,20 +243,26 @@ button:hover {
   max-width: 600px;
   height: 700px;
   margin: 40px auto 0;
-  background-color: transparent;
-  
-  /* Pulls a pure-code SVG directly from the web */
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Bangladesh_map_blank.svg'); 
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  
-  /* The Magic Trick: Turns the map into a glowing radar! */
-  filter: invert(1) sepia(1) hue-rotate(130deg) brightness(0.9) opacity(0.8);
-  
+  background-color: var(--dark);
   border: 1px solid var(--secondary);
   border-radius: 12px;
   box-shadow: inset 0 0 20px rgba(32, 201, 201, 0.2);
+  overflow: hidden; /* Keeps the map neatly inside the box */
+}
+
+/* The invisible layer trick to make the PNG glow without affecting the pins */
+.map-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Reliable PNG fallback URL from Wikipedia */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Bangladesh_map_blank.svg/600px-Bangladesh_map_blank.svg.png'); 
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* The Magic Filter */
+  filter: invert(1) sepia(1) hue-rotate(130deg) brightness(0.9) opacity(0.6);
+  z-index: 0; /* Keeps map in the background */
 }
 
 .map-pin {
@@ -265,6 +270,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 2; /* Keeps your glowing pins above the map */
 }
 
 /* The Glowing Dot */
