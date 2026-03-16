@@ -79,8 +79,6 @@ button:hover {
   background: #18a3a3;
 }
 
-/* THE HOMEPAGE - LONG & PROFESSIONAL CONTENT */
-
 /* Hero Slider Section */
 .hero{
   padding:40px 20px;
@@ -113,11 +111,11 @@ button:hover {
   height:420px;
   object-fit:cover;
   border-radius:10px;
-  display: none; /* Hidden by default */
+  display: none; 
 }
 
 .slider img.active {
-    display: block; /* Show the active one */
+    display: block; 
 }
 
 /* Why Choose Us Section */
@@ -196,7 +194,6 @@ button:hover {
   transition: all 0.8s ease-out;
 }
 
-/* JavaScript will add the active class to trigger this */
 .process-step.active {
   opacity: 1;
   transform: translateY(0);
@@ -234,9 +231,93 @@ button:hover {
   opacity: 0.8;
   line-height: 1.5;
 }
-/* -------------------------------- */
 
-/* Sections and Styling */
+/* --- THE NEW ANIMATED SOURCING MAP --- */
+.map-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: var(--primary);
+}
+
+.map-container {
+  position: relative;
+  max-width: 600px;
+  height: 700px;
+  margin: 40px auto 0;
+  background-color: transparent;
+  
+  /* Pulls a pure-code SVG directly from the web */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Bangladesh_map_blank.svg'); 
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* The Magic Trick: Turns the map into a glowing radar! */
+  filter: invert(1) sepia(1) hue-rotate(130deg) brightness(0.9) opacity(0.8);
+  
+  border: 1px solid var(--secondary);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px rgba(32, 201, 201, 0.2);
+}
+
+.map-pin {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The Glowing Dot */
+.pin-dot {
+  width: 16px;
+  height: 16px;
+  background-color: var(--secondary);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 10px var(--secondary);
+}
+
+.pin-dot::after {
+  content: '';
+  position: absolute;
+  top: -6px; left: -6px; right: -6px; bottom: -6px;
+  border: 2px solid var(--secondary);
+  border-radius: 50%;
+  animation: radarPulse 1.5s infinite ease-out;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.pin-label {
+  background: rgba(8, 44, 52, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 10px;
+  border: 1px solid var(--secondary);
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.pin-label small {
+  color: var(--accent);
+  font-weight: normal;
+  display: block;
+  margin-top: 3px;
+}
+
+/* Approximate coordinates for the map pins (percentages based on container) */
+.map-pin.sylhet { top: 25%; right: 25%; }
+.map-pin.chandpur { top: 55%; left: 45%; }
+.map-pin.khulna { top: 70%; left: 25%; }
+.map-pin.coxs { bottom: 15%; right: 20%; }
+.map-pin.mymensingh { top: 35%; left: 40%; }
+/* ------------------------------------ */
+
 .section{
   padding:70px 20px;
   max-width:1200px;
@@ -287,7 +368,7 @@ button:hover {
   width:100%;
   height:220px;
   object-fit:cover;
-  background-color: #08313a; /* Fallback if no image */
+  background-color: #08313a; 
 }
 
 .product-body{
@@ -349,7 +430,6 @@ input,select,textarea{
   margin-top: 40px;
 }
 
-/* Simple responsive fix for product layout */
 @media (max-width: 768px) {
   .product-layout { grid-template-columns: 1fr; }
   .checkout-grid { grid-template-columns: 1fr; }
@@ -357,6 +437,7 @@ input,select,textarea{
   .hero h1 { font-size: 36px; }
   .supply-grid { flex-direction: column; align-items: center; }
   .process-step { width: 100%; max-width: 300px; margin-bottom: 20px; }
+  .map-container { height: 400px; } 
 }
 </style>
 </head>
@@ -476,6 +557,40 @@ input,select,textarea{
       </div>
     </div>
   </div>
+
+  <div class="map-section">
+    <h2 class="section-title">Where We Source From</h2>
+    <p class="section-subtitle">We partner with local fishermen across Bangladesh to bring you the best authentic catches.</p>
+    
+    <div class="map-container">
+      
+      <div class="map-pin sylhet">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Sunamganj / Sylhet<small>Premium Haor Fish</small></div>
+      </div>
+
+      <div class="map-pin chandpur">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Chandpur<small>Authentic Padma Ilish</small></div>
+      </div>
+
+      <div class="map-pin khulna">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Khulna / Satkhira<small>Fresh River Shrimp</small></div>
+      </div>
+
+      <div class="map-pin coxs">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Cox's Bazar<small>Deep Sea Fish</small></div>
+      </div>
+
+      <div class="map-pin mymensingh">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Mymensingh<small>Freshwater Beel Fish</small></div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <section id="categories" class="section hidden">
@@ -536,7 +651,7 @@ input,select,textarea{
   <div class="checkout-grid">
     <div>
       <label>Full Name</label>
-      <input type="text" id="custName" placeholder="Muyen Ahmed">
+      <input type="text" id="custName" placeholder="Full Name">
 
       <label>Phone Number</label>
       <input type="tel" id="custPhone" placeholder="017...">
@@ -587,7 +702,6 @@ input,select,textarea{
 </div>
 
 <script>
-// FISH DATA (Hard-coded for prototype)
 const fish={
   river:["rui","katla","boal","ayer","pangash"],
   sea:["rupchanda","coral","kala chanda"],
@@ -601,13 +715,11 @@ let selectedFish=null;
 let selectedPrice=0;
 let selectedWeight=0;
 
-// Function to Show/Hide Sections
 function show(id){
   document.querySelectorAll("section, #home").forEach(s=>s.classList.add("hidden"));
   
   if(id === 'home') {
     document.getElementById('home').classList.remove('hidden');
-    // We explicitly call this to trigger supply chain animations if they are visible
     checkAnimations();
   } else {
     document.getElementById(id).classList.remove("hidden");
@@ -616,57 +728,36 @@ function show(id){
   window.scrollTo(0,0);
 }
 
-// --------------------------------------------------------------------
-// HOMEPAGE CAROUSEL LOGIC
-// --------------------------------------------------------------------
 const images = document.querySelectorAll(".slider img");
 let activeIndex = 0;
 
 function rotateImages() {
-    // Hide current image
     images[activeIndex].classList.remove("active");
-    
-    // Increment index, wrapping around
     activeIndex = (activeIndex + 1) % images.length;
-    
-    // Show new image
     images[activeIndex].classList.add("active");
 }
 
-// Start auto-rotation every 4 seconds
 setInterval(rotateImages, 4000);
 
-
-// --------------------------------------------------------------------
-// ANIMATED SUPPLY CHAIN LOGIC (Scroll-triggered)
-// --------------------------------------------------------------------
 const steps = document.querySelectorAll(".process-step");
 
-// Function to check which steps are visible and trigger animation
 function checkAnimations() {
-  const triggerBottom = window.innerHeight * 0.8; // Trigger when 80% visible
+  const triggerBottom = window.innerHeight * 0.8; 
 
   steps.forEach((step, index) => {
     const stepTop = step.getBoundingClientRect().top;
 
     if (stepTop < triggerBottom) {
-      // Add "active" class with a staggering delay for a domino effect
       setTimeout(() => {
         step.classList.add("active");
-      }, index * 200); // 200ms delay per step
+      }, index * 200); 
     }
   });
 }
 
-// Run check on scroll
 window.addEventListener("scroll", checkAnimations);
-
-// Initial check on page load (in case some are visible)
 document.addEventListener("DOMContentLoaded", checkAnimations);
-// --------------------------------------------------------------------
 
-
-// PROTOTYPE E-COMMERCE LOGIC (updated from last time)
 function loadCategory(cat){
   show("products");
   let list=document.getElementById("productList");
@@ -674,7 +765,7 @@ function loadCategory(cat){
   document.getElementById("productTitle").innerText=cat.toUpperCase()+" FISH";
 
   fish[cat].forEach(name=>{
-    let img="images/"+name+".jpg"; // Ensure you have these placeholder images in GitHub
+    let img="images/"+name+".jpg"; 
     let div=document.createElement("div");
     div.className="product";
     div.innerHTML=`
@@ -690,15 +781,14 @@ function loadCategory(cat){
 
 function openFish(name,img){
   selectedFish=name;
-  selectedWeight=0; // Reset weight
-  selectedPrice=0; // Reset price
+  selectedWeight=0; 
+  selectedPrice=0; 
   document.getElementById("priceDisplay").innerText = "Total Price: ৳0";
   document.getElementById("sizeRange").value = "";
   document.getElementById("weightSelect").innerHTML = '<option value="">Choose size range first...</option>';
   
   document.getElementById("mainImage").src=img;
   
-  // Image error fallback for the main product page
   document.getElementById("mainImage").onerror = function() {
     this.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='400'><rect width='100%' height='100%' fill='%2308313a'/><text x='50%' y='50%' fill='white' font-size='24' dominant-baseline='middle' text-anchor='middle'>Image Placeholder</text></svg>";
   };
@@ -733,7 +823,6 @@ function loadWeightOptions(){
     select.appendChild(opt);
   });
   
-  // Reset price display until exact weight is chosen
   document.getElementById("priceDisplay").innerText = "Total Price: ৳0";
   selectedWeight = 0;
 }
@@ -754,7 +843,6 @@ function calculatePrice(){
 }
 
 function addSelectedFish(){
-  // Prevent adding if they haven't selected a weight (fixed)
   if(selectedWeight === 0 || isNaN(selectedWeight)) {
       alert("Please select a size range and exact weight first!");
       return;
@@ -764,13 +852,11 @@ function addSelectedFish(){
   cart.push({name:selectedFish,kg:selectedWeight,price:total});
   document.getElementById("cartCount").innerText=cart.length;
 
-  // Visual Feedback for "Add To Cart" button (fixed)
   let btn = document.getElementById("addToCartBtn");
   let originalText = btn.innerText;
   btn.innerText = "✅ Added to Cart!";
-  btn.style.backgroundColor = "#4CAF50"; // Turn button green
+  btn.style.backgroundColor = "#4CAF50"; 
 
-  // Reset button after 2 seconds
   setTimeout(() => {
       btn.innerText = originalText;
       btn.style.backgroundColor = "var(--secondary)";
@@ -824,7 +910,6 @@ function updateDeliveryTotal(subtotal){
 }
 
 function updateDelivery(){
-  // Recalculate based on current cart subtotal
   let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
   updateDeliveryTotal(subtotal);
 }
@@ -838,13 +923,11 @@ function confirmOrder(){
   let phone = document.getElementById("custPhone").value;
   let address = document.getElementById("custAddress").value;
 
-  // Prevent orders without items (fixed)
   if(cart.length === 0) {
       alert("Your cart is empty! Please add some fish first.");
       return;
   }
 
-  // Basic Form Validation (fixed)
   if(name === "" || phone === "" || address === "") {
       alert("Please fill in your Name, Phone Number, and Address for delivery.");
       return;
@@ -855,7 +938,6 @@ function confirmOrder(){
   cart=[];
   document.getElementById("cartCount").innerText=0;
   
-  // Clear the form (fixed)
   document.getElementById("custName").value = "";
   document.getElementById("custPhone").value = "";
   document.getElementById("custAddress").value = "";
@@ -871,7 +953,6 @@ function trackOrder(){
     return;
   }
 
-  // Prototype: Just show a random status
   document.getElementById("trackResult").innerHTML=`
     <div style="background: var(--card); padding: 30px; border-radius: 10px; border: 1px solid var(--secondary);">
       <h3 style="color: var(--accent); margin-bottom: 30px;">Status for: ${id}</h3>
