@@ -18,9 +18,10 @@
 
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family: Arial, sans-serif;
   background:var(--primary);
   color:white;
+  scroll-behavior: smooth;
 }
 
 /* Pre-Order Banner */
@@ -44,6 +45,11 @@ header{
   top:0;
   background:var(--primary);
   z-index:100;
+}
+
+header h2 {
+    margin: 0;
+    cursor: pointer;
 }
 
 nav a{
@@ -73,8 +79,11 @@ button:hover {
   background: #18a3a3;
 }
 
+/* THE HOMEPAGE - LONG & PROFESSIONAL CONTENT */
+
+/* Hero Slider Section */
 .hero{
-  padding:80px 20px;
+  padding:40px 20px;
   text-align:center;
   background:linear-gradient(180deg,#0f4c5c,#0b3b45);
 }
@@ -87,15 +96,80 @@ button:hover {
 .hero p{
   font-size:18px;
   opacity:.9;
+  margin-bottom: 30px;
 }
+
+.slider{
+  max-width:900px;
+  margin:0 auto 40px;
+  border: 2px solid var(--secondary);
+  border-radius:12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border-radius:10px;
+  display: none; /* Hidden by default */
+}
+
+.slider img.active {
+    display: block; /* Show the active one */
+}
+
+/* Why Choose Us Section */
+.why-us-section {
+    padding: 70px 20px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.why-card {
+    background: var(--dark);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--secondary);
+    transition: 0.3s;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.why-card .icon {
+    font-size: 50px;
+    color: var(--secondary);
+    margin-bottom: 20px;
+}
+
 
 /* --- THE ANIMATED SUPPLY CHAIN --- */
 .supply-chain-section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: var(--dark);
-  text-align: center;
   border-top: 1px solid var(--secondary);
   border-bottom: 1px solid var(--secondary);
+  overflow: hidden;
+}
+
+.supply-chain-section p.intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 18px;
+    opacity: 0.9;
 }
 
 .supply-grid {
@@ -104,56 +178,65 @@ button:hover {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 20px;
-  max-width: 1200px;
-  margin: 40px auto 0;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .process-step {
   flex: 1;
-  min-width: 150px;
+  min-width: 180px;
   background: var(--card);
-  padding: 20px;
+  padding: 25px;
   border-radius: 12px;
   border: 1px dashed var(--secondary);
   position: relative;
+  text-align: center;
   opacity: 0;
   transform: translateY(30px);
-  animation: slideUp 0.8s ease forwards;
+  transition: all 0.8s ease-out;
 }
 
-/* Staggering the animation for a domino effect */
-.process-step:nth-child(1) { animation-delay: 0.2s; }
-.process-step:nth-child(2) { animation-delay: 0.6s; }
-.process-step:nth-child(3) { animation-delay: 1.0s; }
-.process-step:nth-child(4) { animation-delay: 1.4s; }
-.process-step:nth-child(5) { animation-delay: 1.8s; }
-.process-step:nth-child(6) { animation-delay: 2.2s; }
+/* JavaScript will add the active class to trigger this */
+.process-step.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-@keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.step-number {
+    background: var(--secondary);
+    color: var(--dark);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: -35px auto 15px;
+    border: 2px solid var(--dark);
 }
 
 .step-icon {
-  font-size: 40px;
-  margin-bottom: 10px;
+  font-size: 50px;
+  margin-bottom: 15px;
+  color: var(--accent);
 }
 
 .step-title {
   font-weight: bold;
-  color: var(--accent);
+  color: var(--secondary);
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .step-desc {
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.8;
+  line-height: 1.5;
 }
 /* -------------------------------- */
 
+/* Sections and Styling */
 .section{
   padding:70px 20px;
   max-width:1200px;
@@ -163,7 +246,14 @@ button:hover {
 .section-title{
   text-align:center;
   font-size:32px;
-  margin-bottom:40px;
+  margin-bottom:10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    margin-bottom: 50px;
+    opacity: 0.8;
+    font-size: 18px;
 }
 
 .categories, .products {
@@ -264,6 +354,9 @@ input,select,textarea{
   .product-layout { grid-template-columns: 1fr; }
   .checkout-grid { grid-template-columns: 1fr; }
   header { flex-direction: column; gap: 15px; }
+  .hero h1 { font-size: 36px; }
+  .supply-grid { flex-direction: column; align-items: center; }
+  .process-step { width: 100%; max-width: 300px; margin-bottom: 20px; }
 }
 </style>
 </head>
@@ -275,7 +368,7 @@ input,select,textarea{
 </div>
 
 <header>
-  <h2>The River Run</h2>
+  <h2 onclick="show('home')">The River Run</h2>
   <nav>
     <a href="#" onclick="show('home')">Home</a>
     <a href="#" onclick="show('categories')">Fish</a>
@@ -288,50 +381,98 @@ input,select,textarea{
 <section id="home">
   <div class="hero">
     <h1>Fresh River & Sea Fish Delivered</h1>
-    <p>We connect the waters of Bangladesh directly to your kitchen.</p>
+    <p> Dhaka Division, Bangladesh.</p>
+    
+    <div class="slider">
+      <img src="images/slider1.png" alt="Fresh Catch Slider" class="active">
+      <img src="images/slider2.png" alt="Happy Customer Slider">
+      <img src="images/slider3.jpg" alt="Beel Fish Slider">
+    </div>
     <br>
     <button onclick="show('categories')" style="padding: 15px 30px; font-size: 18px;">Browse Today's Catch</button>
   </div>
 
+  <div class="why-us-section">
+      <h2 class="section-title">Freshness You Can Trust</h2>
+      <p class="section-subtitle">Why Dhaka Division chooses The River Run for its table.</p>
+      
+      <div class="why-grid">
+          <div class="why-card">
+              <div class="icon">🐟</div>
+              <h3>Always Fresh, Never Frozen</h3>
+              <p>Our fish comes straight from the river to our Dhaka sorting facility, never sitting in deep freezers.</p>
+          </div>
+          <div class="why-card">
+              <div class="icon">🔍</div>
+              <h3>Hand-Selected Quality</h3>
+              <p>Our experts inspect every single fish to ensure it meets our premium quality standards.</p>
+          </div>
+          <div class="why-card">
+              <div class="icon">💰</div>
+              <h3>Cash On Delivery</h3>
+              <p>Pay only when you are satisfied with your fresh fish delivery at your doorstep.</p>
+          </div>
+          <div class="why-card">
+              <div class="icon">🔪</div>
+              <h3>Custom Cutting</h3>
+              <p>Tell us how you want it, and we will clean and cut the fish to your exact preference.</p>
+          </div>
+      </div>
+  </div>
+
+
   <div class="supply-chain-section">
-    <h2 class="section-title">How Our Pre-Order Works</h2>
-    <p>Watch how we guarantee absolute freshness for your family.</p>
+    <h2 class="section-title" style="color: white;">Our Process: Straight From the River</h2>
+    <p class="intro">Here is the exact visual journey of your fish. This is how we guarantee absolute freshness.</p>
     
     <div class="supply-grid">
       <div class="process-step">
+        <div class="step-number">1</div>
         <div class="step-icon">🎣</div>
-        <div class="step-title">1. The Catch</div>
-        <div class="step-desc">Local fishermen pull the fresh catch from the river or haor.</div>
+        <div class="step-title">The Catch</div>
+        <div class="step-desc">Local fishermen pull the fresh catch from the river, haor, or sea.</div>
       </div>
       
       <div class="process-step">
+        <div class="step-number">2</div>
         <div class="step-icon">🤝</div>
-        <div class="step-title">2. Sourcing</div>
-        <div class="step-desc">Our experts hand-select the highest quality fish immediately.</div>
+        <div class="step-title">The Trade</div>
+        <div class="step-desc">Our sourcing team hand-selects the highest quality fish immediately.</div>
       </div>
 
       <div class="process-step">
+        <div class="step-number">3</div>
         <div class="step-icon">🧊</div>
-        <div class="step-title">3. Iced Packing</div>
-        <div class="step-desc">Packed instantly in insulated ice boxes. Never frozen solid.</div>
+        <div class="step-title">Iced Packing</div>
+        <div class="step-desc">Packed instantly in insulated ice boxes. Rushed to our Dhaka sorting center.</div>
       </div>
 
       <div class="process-step">
-        <div class="step-icon">🚚</div>
-        <div class="step-title">4. Transport</div>
-        <div class="step-desc">Rushed directly to our Dhaka sorting facility via pickup.</div>
+        <div class="step-number">4</div>
+        <div class="step-icon">🚛</div>
+        <div class="step-title">Warehouse Transit</div>
+        <div class="step-desc">Fish arrives at our Dhaka facility via temperature-controlled transport.</div>
       </div>
 
       <div class="process-step">
+        <div class="step-number">5</div>
         <div class="step-icon">🔎</div>
-        <div class="step-title">5. Quality Check</div>
-        <div class="step-desc">Final inspection, cleaning, and custom cutting as requested.</div>
+        <div class="step-title">Quality Inspection</div>
+        <div class="step-desc">Final sorting, cleaning, and custom cutting as requested.</div>
       </div>
 
       <div class="process-step">
+        <div class="step-number">6</div>
         <div class="step-icon">🛵</div>
-        <div class="step-title">6. Doorstep</div>
-        <div class="step-desc">Delivered to your home, ready to be cooked!</div>
+        <div class="step-title">Final Mile</div>
+        <div class="step-desc">Our delivery partner rushes the order to your home, ready to cook!</div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">7</div>
+        <div class="step-icon">🎉</div>
+        <div class="step-title">The Arrival</div>
+        <div class="step-desc">You receive the freshest fish on the market. Happy cooking!</div>
       </div>
     </div>
   </div>
@@ -442,10 +583,11 @@ input,select,textarea{
 </section>
 
 <div class="footer">
-  © 2026 The River Run. Freshness Guaranteed.
+  © 2026 The River Run. All Rights Reserved. Freshness Guaranteed.
 </div>
 
 <script>
+// FISH DATA (Hard-coded for prototype)
 const fish={
   river:["rui","katla","boal","ayer","pangash"],
   sea:["rupchanda","coral","kala chanda"],
@@ -459,11 +601,14 @@ let selectedFish=null;
 let selectedPrice=0;
 let selectedWeight=0;
 
+// Function to Show/Hide Sections
 function show(id){
   document.querySelectorAll("section, #home").forEach(s=>s.classList.add("hidden"));
   
   if(id === 'home') {
     document.getElementById('home').classList.remove('hidden');
+    // We explicitly call this to trigger supply chain animations if they are visible
+    checkAnimations();
   } else {
     document.getElementById(id).classList.remove("hidden");
   }
@@ -471,6 +616,57 @@ function show(id){
   window.scrollTo(0,0);
 }
 
+// --------------------------------------------------------------------
+// HOMEPAGE CAROUSEL LOGIC
+// --------------------------------------------------------------------
+const images = document.querySelectorAll(".slider img");
+let activeIndex = 0;
+
+function rotateImages() {
+    // Hide current image
+    images[activeIndex].classList.remove("active");
+    
+    // Increment index, wrapping around
+    activeIndex = (activeIndex + 1) % images.length;
+    
+    // Show new image
+    images[activeIndex].classList.add("active");
+}
+
+// Start auto-rotation every 4 seconds
+setInterval(rotateImages, 4000);
+
+
+// --------------------------------------------------------------------
+// ANIMATED SUPPLY CHAIN LOGIC (Scroll-triggered)
+// --------------------------------------------------------------------
+const steps = document.querySelectorAll(".process-step");
+
+// Function to check which steps are visible and trigger animation
+function checkAnimations() {
+  const triggerBottom = window.innerHeight * 0.8; // Trigger when 80% visible
+
+  steps.forEach((step, index) => {
+    const stepTop = step.getBoundingClientRect().top;
+
+    if (stepTop < triggerBottom) {
+      // Add "active" class with a staggering delay for a domino effect
+      setTimeout(() => {
+        step.classList.add("active");
+      }, index * 200); // 200ms delay per step
+    }
+  });
+}
+
+// Run check on scroll
+window.addEventListener("scroll", checkAnimations);
+
+// Initial check on page load (in case some are visible)
+document.addEventListener("DOMContentLoaded", checkAnimations);
+// --------------------------------------------------------------------
+
+
+// PROTOTYPE E-COMMERCE LOGIC (updated from last time)
 function loadCategory(cat){
   show("products");
   let list=document.getElementById("productList");
@@ -558,6 +754,7 @@ function calculatePrice(){
 }
 
 function addSelectedFish(){
+  // Prevent adding if they haven't selected a weight (fixed)
   if(selectedWeight === 0 || isNaN(selectedWeight)) {
       alert("Please select a size range and exact weight first!");
       return;
@@ -567,12 +764,13 @@ function addSelectedFish(){
   cart.push({name:selectedFish,kg:selectedWeight,price:total});
   document.getElementById("cartCount").innerText=cart.length;
 
-  // Visual Feedback Magic
+  // Visual Feedback for "Add To Cart" button (fixed)
   let btn = document.getElementById("addToCartBtn");
   let originalText = btn.innerText;
   btn.innerText = "✅ Added to Cart!";
-  btn.style.backgroundColor = "#4CAF50"; 
+  btn.style.backgroundColor = "#4CAF50"; // Turn button green
 
+  // Reset button after 2 seconds
   setTimeout(() => {
       btn.innerText = originalText;
       btn.style.backgroundColor = "var(--secondary)";
@@ -626,6 +824,7 @@ function updateDeliveryTotal(subtotal){
 }
 
 function updateDelivery(){
+  // Recalculate based on current cart subtotal
   let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
   updateDeliveryTotal(subtotal);
 }
@@ -639,11 +838,13 @@ function confirmOrder(){
   let phone = document.getElementById("custPhone").value;
   let address = document.getElementById("custAddress").value;
 
+  // Prevent orders without items (fixed)
   if(cart.length === 0) {
       alert("Your cart is empty! Please add some fish first.");
       return;
   }
 
+  // Basic Form Validation (fixed)
   if(name === "" || phone === "" || address === "") {
       alert("Please fill in your Name, Phone Number, and Address for delivery.");
       return;
@@ -654,6 +855,7 @@ function confirmOrder(){
   cart=[];
   document.getElementById("cartCount").innerText=0;
   
+  // Clear the form (fixed)
   document.getElementById("custName").value = "";
   document.getElementById("custPhone").value = "";
   document.getElementById("custAddress").value = "";
@@ -669,6 +871,7 @@ function trackOrder(){
     return;
   }
 
+  // Prototype: Just show a random status
   document.getElementById("trackResult").innerHTML=`
     <div style="background: var(--card); padding: 30px; border-radius: 10px; border: 1px solid var(--secondary);">
       <h3 style="color: var(--accent); margin-bottom: 30px;">Status for: ${id}</h3>
@@ -693,11 +896,6 @@ function trackOrder(){
     </div>
   `;
 }
-
-// Ensure home is visible on initial load
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("home").classList.remove("hidden");
-});
 </script>
 
 </body>
