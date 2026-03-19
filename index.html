@@ -306,11 +306,13 @@ button:hover {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Bangladesh_map_blank.svg/600px-Bangladesh_map_blank.svg.png'); 
-  background-size: contain;
+  /* Replaced Wikipedia URL with a reliable, live-server friendly CDN link */
+  background-image: url('https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/bd/vector.svg'); 
+  background-size: 85%;
   background-position: center;
   background-repeat: no-repeat;
-  filter: invert(1) sepia(1) hue-rotate(130deg) brightness(0.9) opacity(0.6);
+  /* Magic Filter converts the black vector into a dark glowing teal silhouette */
+  filter: invert(1) sepia(1) hue-rotate(130deg) brightness(0.9) opacity(0.25);
   z-index: 0; 
 }
 
@@ -364,11 +366,12 @@ button:hover {
   margin-top: 3px;
 }
 
-.map-pin.sylhet { top: 25%; right: 25%; }
+/* Coordinates adjusted slightly to fit the new vector map bounds */
+.map-pin.sylhet { top: 20%; right: 25%; }
 .map-pin.chandpur { top: 55%; left: 45%; }
-.map-pin.khulna { top: 70%; left: 25%; }
-.map-pin.coxs { bottom: 15%; right: 20%; }
-.map-pin.mymensingh { top: 35%; left: 40%; }
+.map-pin.khulna { top: 65%; left: 30%; }
+.map-pin.coxs { bottom: 85%; right: 20%; } /* Adjusted specifically to keep it visible */
+.map-pin.mymensingh { top: 30%; left: 40%; }
 
 .section{
   padding:70px 20px;
