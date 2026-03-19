@@ -5,32 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The River Run – Fresh Fish Delivery</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
 <style>
-/* Refined Color Palette & Variables */
-:root {
-  --primary: #0f4c5c;
-  --secondary: #20c9c9;
-  --dark: #07252b;
-  --card: #0a313a;
+:root{
+  --primary:#0f4c5c;
+  --secondary:#20c9c9;
+  --dark:#0b3b45;
+  --card:#082c34;
   --accent: #e0fbfc;
-  --text-main: #f8f9fa;
-  --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  --transition: all 0.3s ease;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--primary);
-  color: var(--text-main);
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:var(--primary);
+  color:white;
   scroll-behavior: smooth;
-  line-height: 1.6;
 }
 
 /* Pre-Order Banner */
@@ -38,192 +29,421 @@ body {
   background-color: var(--secondary);
   color: var(--dark);
   text-align: center;
-  padding: 12px;
-  font-weight: 600;
+  padding: 10px;
+  font-weight: bold;
   font-size: 14px;
   letter-spacing: 0.5px;
 }
 
-/* Header Refinements */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 5%;
-  border-bottom: 1px solid rgba(32, 201, 201, 0.2);
-  position: sticky;
-  top: 0;
-  background: rgba(15, 76, 92, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 40px;
+  border-bottom:2px solid var(--secondary);
+  position:sticky;
+  top:0;
+  background:var(--primary);
+  z-index:100;
 }
 
 header h2 {
-  margin: 0;
-  cursor: pointer;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: var(--accent);
+    margin: 0;
+    cursor: pointer;
 }
 
-nav a {
-  margin: 0 15px;
-  color: var(--text-main);
-  text-decoration: none;
-  font-weight: 600;
-  transition: var(--transition);
+nav a{
+  margin:0 12px;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  transition: 0.3s;
 }
 
-nav a:hover { color: var(--secondary); }
+nav a:hover {
+  color: var(--secondary);
+}
 
-button {
-  background: var(--secondary);
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  color: var(--dark);
-  font-weight: 800;
-  cursor: pointer;
-  transition: var(--transition);
-  font-family: 'Inter', sans-serif;
+button{
+  background:var(--secondary);
+  border:none;
+  padding:10px 18px;
+  border-radius:6px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(32, 201, 201, 0.4);
+  background: #18a3a3;
 }
 
-/* Hero Section */
-.hero {
-  padding: 60px 20px;
-  text-align: center;
-  background: linear-gradient(180deg, var(--primary), var(--dark));
+/* Hero Slider Section */
+.hero{
+  padding:40px 20px;
+  text-align:center;
+  background:linear-gradient(180deg,#0f4c5c,#0b3b45);
 }
 
-.hero h1 {
-  font-size: clamp(36px, 5vw, 56px);
-  margin-bottom: 15px;
-  font-weight: 800;
+.hero h1{
+  font-size:48px;
+  margin-bottom:10px;
 }
 
-.hero p {
-  font-size: 20px;
-  opacity: 0.9;
-  margin-bottom: 40px;
-  font-weight: 300;
+.hero p{
+  font-size:18px;
+  opacity:.9;
+  margin-bottom: 30px;
 }
 
-.slider {
-  max-width: 900px;
-  margin: 0 auto 40px;
-  border-radius: 16px;
+.slider{
+  max-width:900px;
+  margin:0 auto 40px;
+  border: 2px solid var(--secondary);
+  border-radius:12px;
   overflow: hidden;
   position: relative;
-  box-shadow: var(--shadow);
 }
 
-.slider img {
-  width: 100%;
-  height: 450px;
-  object-fit: cover;
-  display: none;
-  transition: opacity 0.5s ease-in-out;
+.slider img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border-radius:10px;
+  display: none; 
 }
 
-.slider img.active { display: block; }
+.slider img.active {
+    display: block; 
+}
 
-/* Grid Systems */
-.section {
-  padding: 80px 5%;
+/* Why Choose Us Section */
+.why-us-section {
+    padding: 70px 20px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.why-card {
+    background: var(--dark);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--secondary);
+    transition: 0.3s;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.why-card .icon {
+    font-size: 50px;
+    color: var(--secondary);
+    margin-bottom: 20px;
+}
+
+/* --- THE ANIMATED SUPPLY CHAIN --- */
+.supply-chain-section {
+  padding: 80px 20px;
+  background: var(--dark);
+  border-top: 1px solid var(--secondary);
+  border-bottom: 1px solid var(--secondary);
+  overflow: hidden;
+}
+
+.supply-chain-section p.intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.supply-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
   max-width: 1400px;
-  margin: auto;
+  margin: 0 auto;
 }
 
-.section-title {
+.process-step {
+  flex: 1;
+  min-width: 180px;
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px dashed var(--secondary);
+  position: relative;
   text-align: center;
-  font-size: 36px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.process-step.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-number {
+    background: var(--secondary);
+    color: var(--dark);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: -35px auto 15px;
+    border: 2px solid var(--dark);
+}
+
+.step-icon {
+  font-size: 50px;
   margin-bottom: 15px;
-  font-weight: 800;
+  color: var(--accent);
 }
 
-.section-subtitle {
-  text-align: center;
-  margin-bottom: 60px;
-  opacity: 0.8;
+.step-title {
+  font-weight: bold;
+  color: var(--secondary);
+  margin-bottom: 5px;
   font-size: 18px;
 }
 
-.categories, .products, .why-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+.step-desc {
+  font-size: 13px;
+  opacity: 0.8;
+  line-height: 1.5;
 }
 
-/* Cards */
-.card, .why-card, .process-step {
-  background: var(--card);
-  padding: 30px;
-  border-radius: 16px;
-  border: 1px solid rgba(32, 201, 201, 0.1);
+/* --- THE NEW ANIMATED SOURCING MAP --- */
+.map-section {
+  padding: 80px 20px;
   text-align: center;
-  cursor: pointer;
-  transition: var(--transition);
+  background: var(--primary);
 }
 
-.card:hover, .why-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow);
-  border-color: var(--secondary);
+.map-container {
+  position: relative;
+  max-width: 600px;
+  height: 700px;
+  margin: 40px auto 0;
+  background-color: var(--dark);
+  border: 1px solid var(--secondary);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px rgba(32, 201, 201, 0.2);
+  overflow: hidden; /* Keeps the map neatly inside the box */
 }
 
-.product {
-  background: var(--card);
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: var(--transition);
+/* The invisible layer trick to make the PNG glow without affecting the pins */
+.map-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Reliable PNG fallback URL from Wikipedia */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Bangladesh_map_blank.svg/600px-Bangladesh_map_blank.svg.png'); 
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* The Magic Filter */
+  filter: invert(1) sepia(1) hue-rotate(130deg) brightness(0.9) opacity(0.6);
+  z-index: 0; /* Keeps map in the background */
 }
 
-.product:hover {
+.map-pin {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2; /* Keeps your glowing pins above the map */
+}
+
+/* The Glowing Dot */
+.pin-dot {
+  width: 16px;
+  height: 16px;
+  background-color: var(--secondary);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 10px var(--secondary);
+}
+
+.pin-dot::after {
+  content: '';
+  position: absolute;
+  top: -6px; left: -6px; right: -6px; bottom: -6px;
+  border: 2px solid var(--secondary);
+  border-radius: 50%;
+  animation: radarPulse 1.5s infinite ease-out;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.pin-label {
+  background: rgba(8, 44, 52, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 10px;
+  border: 1px solid var(--secondary);
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.pin-label small {
+  color: var(--accent);
+  font-weight: normal;
+  display: block;
+  margin-top: 3px;
+}
+
+/* Approximate coordinates for the map pins (percentages based on container) */
+.map-pin.sylhet { top: 25%; right: 25%; }
+.map-pin.chandpur { top: 55%; left: 45%; }
+.map-pin.khulna { top: 70%; left: 25%; }
+.map-pin.coxs { bottom: 15%; right: 20%; }
+.map-pin.mymensingh { top: 35%; left: 40%; }
+/* ------------------------------------ */
+
+.section{
+  padding:70px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    margin-bottom: 50px;
+    opacity: 0.8;
+    font-size: 18px;
+}
+
+.categories, .products {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--dark);
+  padding:30px;
+  border-radius:12px;
+  border:1px solid var(--secondary);
+  text-align:center;
+  cursor:pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow);
 }
 
-.product img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
+.product{
+  background:var(--dark);
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--secondary);
+}
+
+.product img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  background-color: #08313a; 
+}
+
+.product-body{
+  padding:15px;
+  text-align:center;
+}
+
+.product-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+.product-gallery img{
+  width:100%;
+  border-radius:10px;
   background-color: #08313a;
 }
 
-.product-body { padding: 20px; text-align: center; }
-
-/* Forms & Inputs */
-input, select, textarea {
-  width: 100%;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(0,0,0,0.2);
-  color: white;
-  margin-top: 8px;
-  margin-bottom: 20px;
-  font-family: 'Inter', sans-serif;
-  transition: border 0.3s;
+.price-box{
+  font-size:24px;
+  margin:15px 0;
+  color: var(--accent);
+  font-weight: bold;
 }
 
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: var(--secondary);
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  border-radius:6px;
+  border:1px solid var(--secondary);
+  background:#08313a;
+  color:white;
+  margin-top:8px;
+  margin-bottom: 15px;
 }
 
-.hidden { display: none !important; }
+.checkout-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:30px;
+}
 
-/* Responsive adjustments */
+.summary{
+  background:var(--card);
+  padding:20px;
+  border-radius:10px;
+  border: 1px solid var(--secondary);
+}
+
+.hidden{
+  display:none;
+}
+
+.footer{
+  text-align:center;
+  padding:40px;
+  border-top:1px solid var(--secondary);
+  margin-top: 40px;
+}
+
 @media (max-width: 768px) {
-  header { flex-direction: column; gap: 20px; }
-  .slider img { height: 300px; }
+  .product-layout { grid-template-columns: 1fr; }
+  .checkout-grid { grid-template-columns: 1fr; }
+  header { flex-direction: column; gap: 15px; }
+  .hero h1 { font-size: 36px; }
+  .supply-grid { flex-direction: column; align-items: center; }
+  .process-step { width: 100%; max-width: 300px; margin-bottom: 20px; }
+  .map-container { height: 400px; } 
 }
 </style>
 </head>
@@ -231,7 +451,7 @@ input:focus, select:focus, textarea:focus {
 <body>
 
 <div class="top-banner">
-  🌊 100% Pre-Order Basis: We source your fish AFTER you order. Never frozen!
+  🌊 100% Pre-Order Basis: We source your fish AFTER you order. From river to door, never frozen!
 </div>
 
 <header>
@@ -240,6 +460,7 @@ input:focus, select:focus, textarea:focus {
     <a href="#" onclick="show('home')">Home</a>
     <a href="#" onclick="show('categories')">Fish</a>
     <a href="#" onclick="showCart()">Cart (<span id="cartCount">0</span>)</a>
+    <a href="#" onclick="show('track')">Track Order</a>
   </nav>
   <button onclick="show('categories')">Order Now</button>
 </header>
@@ -247,45 +468,145 @@ input:focus, select:focus, textarea:focus {
 <section id="home">
   <div class="hero">
     <h1>Fresh River & Sea Fish Delivered</h1>
-    <p>Dhaka Division, Bangladesh</p>
+    <p> Dhaka Division, Bangladesh.</p>
     
     <div class="slider">
-      <img src="images/slider1.png" alt="Fresh Catch" class="active" onerror="this.src='https://via.placeholder.com/900x450/0a313a/20c9c9?text=Fresh+Catch'">
-      <img src="images/slider2.png" alt="Happy Customer" onerror="this.src='https://via.placeholder.com/900x450/0a313a/20c9c9?text=Premium+Quality'">
+      <img src="images/slider1.png" alt="Fresh Catch Slider" class="active">
+      <img src="images/slider2.png" alt="Happy Customer Slider">
+      <img src="images/slider3.jpg" alt="Beel Fish Slider">
     </div>
-    <button onclick="show('categories')" style="padding: 16px 32px; font-size: 18px; margin-top: 20px;">Browse Today's Catch</button>
+    <br>
+    <button onclick="show('categories')" style="padding: 15px 30px; font-size: 18px;">Browse Today's Catch</button>
   </div>
-  
-  <div class="section">
-    <h2 class="section-title">Freshness You Can Trust</h2>
-    <div class="why-grid">
-      <div class="why-card">
-        <h1 style="font-size: 40px; margin: 0;">🐟</h1>
-        <h3>Never Frozen</h3>
-        <p>Straight from the river to our sorting facility.</p>
+
+  <div class="why-us-section">
+      <h2 class="section-title">Freshness You Can Trust</h2>
+      <p class="section-subtitle">Why Dhaka Division chooses The River Run for its table.</p>
+      
+      <div class="why-grid">
+          <div class="why-card">
+              <div class="icon">🐟</div>
+              <h3>Always Fresh, Never Frozen</h3>
+              <p>Our fish comes straight from the river to our Dhaka sorting facility, never sitting in deep freezers.</p>
+          </div>
+          <div class="why-card">
+              <div class="icon">🔍</div>
+              <h3>Hand-Selected Quality</h3>
+              <p>Our experts inspect every single fish to ensure it meets our premium quality standards.</p>
+          </div>
+          <div class="why-card">
+              <div class="icon">💰</div>
+              <h3>Cash On Delivery</h3>
+              <p>Pay only when you are satisfied with your fresh fish delivery at your doorstep.</p>
+          </div>
+          <div class="why-card">
+              <div class="icon">🔪</div>
+              <h3>Custom Cutting</h3>
+              <p>Tell us how you want it, and we will clean and cut the fish to your exact preference.</p>
+          </div>
       </div>
-      <div class="why-card">
-        <h1 style="font-size: 40px; margin: 0;">💰</h1>
-        <h3>Cash On Delivery</h3>
-        <p>Pay only when you are satisfied at your doorstep.</p>
+  </div>
+
+
+  <div class="supply-chain-section">
+    <h2 class="section-title" style="color: white;">Our Process: Straight From the River</h2>
+    <p class="intro">Here is the exact visual journey of your fish. This is how we guarantee absolute freshness.</p>
+    
+    <div class="supply-grid">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <div class="step-icon">🎣</div>
+        <div class="step-title">The Catch</div>
+        <div class="step-desc">Local fishermen pull the fresh catch from the river, haor, or sea.</div>
       </div>
-      <div class="why-card">
-        <h1 style="font-size: 40px; margin: 0;">🔪</h1>
-        <h3>Custom Cutting</h3>
-        <p>Cleaned and cut to your exact preference.</p>
+      
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <div class="step-icon">🤝</div>
+        <div class="step-title">The Trade</div>
+        <div class="step-desc">Our sourcing team hand-selects the highest quality fish immediately.</div>
       </div>
+
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <div class="step-icon">🧊</div>
+        <div class="step-title">Iced Packing</div>
+        <div class="step-desc">Packed instantly in insulated ice boxes. Rushed to our Dhaka sorting center.</div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <div class="step-icon">🚛</div>
+        <div class="step-title">Warehouse Transit</div>
+        <div class="step-desc">Fish arrives at our Dhaka facility via temperature-controlled transport.</div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">5</div>
+        <div class="step-icon">🔎</div>
+        <div class="step-title">Quality Inspection</div>
+        <div class="step-desc">Final sorting, cleaning, and custom cutting as requested.</div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">6</div>
+        <div class="step-icon">🛵</div>
+        <div class="step-title">Final Mile</div>
+        <div class="step-desc">Our delivery partner rushes the order to your home, ready to cook!</div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">7</div>
+        <div class="step-icon">🎉</div>
+        <div class="step-title">The Arrival</div>
+        <div class="step-desc">You receive the freshest fish on the market. Happy cooking!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-section">
+    <h2 class="section-title">Where We Source From</h2>
+    <p class="section-subtitle">We partner with local fishermen across Bangladesh to bring you the best authentic catches.</p>
+    
+    <div class="map-container">
+      
+      <div class="map-pin sylhet">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Sunamganj / Sylhet<small>Premium Haor Fish</small></div>
+      </div>
+
+      <div class="map-pin chandpur">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Chandpur<small>Authentic Padma Ilish</small></div>
+      </div>
+
+      <div class="map-pin khulna">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Khulna / Satkhira<small>Fresh River Shrimp</small></div>
+      </div>
+
+      <div class="map-pin coxs">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Cox's Bazar<small>Deep Sea Fish</small></div>
+      </div>
+
+      <div class="map-pin mymensingh">
+        <div class="pin-dot"></div>
+        <div class="pin-label">Mymensingh<small>Freshwater Beel Fish</small></div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <section id="categories" class="section hidden">
-  <h2 class="section-title">Select Category</h2>
+  <h2 class="section-title">Fish Categories</h2>
   <div class="categories">
-    <div class="card" onclick="loadCategory('river')"><h3>River Fish</h3></div>
-    <div class="card" onclick="loadCategory('sea')"><h3>Sea Fish</h3></div>
-    <div class="card" onclick="loadCategory('shrimp')"><h3>Shrimp</h3></div>
-    <div class="card" onclick="loadCategory('beel')"><h3>Beel Fish</h3></div>
-    <div class="card" onclick="loadCategory('hilsa')"><h3>Hilsa</h3></div>
+    <div class="card" onclick="loadCategory('river')">River Fish</div>
+    <div class="card" onclick="loadCategory('sea')">Sea Fish</div>
+    <div class="card" onclick="loadCategory('shrimp')">Shrimp</div>
+    <div class="card" onclick="loadCategory('beel')">Beel Fish</div>
+    <div class="card" onclick="loadCategory('hilsa')">Hilsa</div>
   </div>
 </section>
 
@@ -295,17 +616,19 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <section id="productPage" class="section hidden">
-  <div class="section" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px;">
-    <img id="mainImage" src="" alt="Fish Preview" style="width: 100%; border-radius: 16px; box-shadow: var(--shadow);">
+  <div class="product-layout">
+    <div class="product-gallery">
+      <img id="mainImage" src="" alt="Fish Preview">
+    </div>
     <div>
-      <h2 id="fishName" style="text-transform: capitalize; font-size: 40px; margin-top: 0;"></h2>
+      <h2 id="fishName" style="text-transform: capitalize; font-size: 36px;"></h2>
       
       <label>Select Size Range</label>
       <select id="sizeRange" onchange="loadWeightOptions()">
         <option value="">Select Range...</option>
-        <option data-price="600">2-3 KG (৳600/kg)</option>
-        <option data-price="800">3-5 KG (৳800/kg)</option>
-        <option data-price="1000">5+ KG (৳1000/kg)</option>
+        <option data-price="600">2-3 KG</option>
+        <option data-price="800">3-5 KG</option>
+        <option data-price="1000">5+ KG</option>
       </select>
 
       <label>Select Exact Weight</label>
@@ -313,250 +636,357 @@ input:focus, select:focus, textarea:focus {
         <option value="">Choose size range first...</option>
       </select>
 
-      <h3 style="color: var(--secondary); font-size: 28px;" id="priceDisplay">Total: ৳0</h3>
-      <button id="addToCartBtn" onclick="addSelectedFish()" style="width: 100%; padding: 16px; font-size: 18px;">Add To Cart</button>
+      <div class="price-box" id="priceDisplay">Total Price: ৳0</div>
+
+      <button id="addToCartBtn" onclick="addSelectedFish()" style="width: 100%; padding: 15px; font-size: 18px;">Add To Cart</button>
     </div>
   </div>
 </section>
 
 <section id="cart" class="section hidden">
   <h2 class="section-title">Your Cart</h2>
-  <div id="cartItems" style="max-width: 800px; margin: 0 auto 30px;"></div>
-  <div style="max-width: 800px; margin: 0 auto; text-align: right;">
-    <h3 id="cartTotal">Subtotal: ৳0</h3>
+  <div id="cartItems" style="margin-bottom: 20px;"></div>
+  <h3 id="cartTotal" style="text-align: right; border-top: 1px solid var(--secondary); padding-top: 10px;">Subtotal: ৳0</h3>
+  <div style="text-align: right;">
     <button onclick="show('checkout')">Proceed to Checkout</button>
   </div>
 </section>
 
 <section id="checkout" class="section hidden">
-  <h2 class="section-title">Checkout Details</h2>
-  <div style="max-width: 600px; margin: 0 auto; background: var(--card); padding: 40px; border-radius: 16px;">
-    <label>Full Name</label>
-    <input type="text" id="custName" placeholder="Your Name">
+  <h2 class="section-title">Checkout</h2>
+  <div class="checkout-grid">
+    <div>
+      <label>Full Name</label>
+      <input type="text" id="custName" placeholder="Full Name">
 
-    <label>WhatsApp Number</label>
-    <input type="tel" id="custPhone" placeholder="017...">
+      <label>Phone Number</label>
+      <input type="tel" id="custPhone" placeholder="017...">
 
-    <label>Delivery Address</label>
-    <textarea id="custAddress" rows="3" placeholder="House, Road, Area..."></textarea>
+      <label>Delivery Address</label>
+      <textarea id="custAddress" rows="3" placeholder="House, Road, Area..."></textarea>
 
-    <label>Location</label>
-    <select id="locationSelect" onchange="updateDelivery()">
-      <option value="120">Inside Dhaka (৳120)</option>
-      <option value="500">Outside Dhaka (৳500)</option>
-    </select>
-    
-    <h2 style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-      <span>Total to Pay:</span> <span style="color: var(--secondary);">৳<span id="finalTotal">0</span></span>
-    </h2>
+      <label>Location</label>
+      <select id="locationSelect" onchange="updateDelivery()">
+        <option value="120">Inside Dhaka (৳120)</option>
+        <option value="500">Outside Dhaka (৳500)</option>
+      </select>
 
-    <button onclick="confirmOrderWhatsApp()" style="width: 100%; margin-top: 20px; padding: 16px; font-size: 18px; background: #25D366; color: white;">
-      Order via WhatsApp
-    </button>
+      <label>Special Cutting Instructions (Optional)</label>
+      <textarea id="custNote" rows="2" placeholder="e.g. Cut into medium pieces, keep the head..."></textarea>
+
+      <button onclick="confirmOrder()" style="width: 100%; margin-top: 20px; padding: 15px; font-size: 18px;">Confirm Pre-Order</button>
+    </div>
+
+    <div class="summary">
+      <h3>Order Summary</h3>
+      <div id="summaryItems" style="border-bottom: 1px solid #333; margin-bottom: 15px; padding-bottom: 15px;"></div>
+      <p style="display: flex; justify-content: space-between;"><span>Delivery:</span> <span>৳<span id="deliveryCharge">120</span></span></p>
+      <h2 style="display: flex; justify-content: space-between; color: var(--accent);"><span>Total:</span> <span>৳<span id="finalTotal">0</span></span></h2>
+    </div>
   </div>
 </section>
 
+<section id="orderSuccess" class="section hidden" style="text-align: center;">
+  <div style="font-size: 60px; margin-bottom: 20px;">🎉</div>
+  <h2 class="section-title">Order Confirmed!</h2>
+  <h3 id="orderID" style="color: var(--secondary);"></h3>
+  <p>Our team will contact you shortly to confirm the sourcing timeline.</p>
+  <br>
+  <button onclick="show('home')">Return to Home</button>
+</section>
+
+<section id="track" class="section hidden" style="text-align: center; max-width: 600px; margin: auto;">
+  <h2 class="section-title">Track Order</h2>
+  <p>Enter your Order ID to see the live status of your fish.</p>
+  <input type="text" id="trackInput" placeholder="e.g. RR-12345" style="text-align: center;">
+  <button onclick="trackOrder()">Track</button>
+  <div id="trackResult" style="margin-top: 40px;"></div>
+</section>
+
+<div class="footer">
+  © 2026 The River Run. All Rights Reserved. Freshness Guaranteed.
+</div>
+
 <script>
-// --- DATA ---
-const fish = {
-  river: ["rui", "katla", "boal", "ayer", "pangash"],
-  sea: ["rupchanda", "coral", "kala chanda"],
-  shrimp: ["golda", "bagda", "horina"],
-  beel: ["shoal", "shing", "meni", "taki"],
-  hilsa: ["hilsa"]
-};
-
-// --- APP STATE WITH LOCAL STORAGE ---
-// This ensures cart data isn't lost if the user refreshes the page!
-let cart = JSON.parse(localStorage.getItem('riverRunCart')) || [];
-let selectedFish = null;
-let selectedPrice = 0;
-let selectedWeight = 0;
-
-// Initialize cart count on load
-document.getElementById("cartCount").innerText = cart.length;
-
-function saveCart() {
-    localStorage.setItem('riverRunCart', JSON.stringify(cart));
+const fish={
+  river:["rui","katla","boal","ayer","pangash"],
+  sea:["rupchanda","coral","kala chanda"],
+  shrimp:["golda","bagda","horina","nodir chingri"],
+  beel:["shoal","shing","meni","taki"],
+  hilsa:["hilsa"]
 }
 
-// --- NAVIGATION ---
-function show(id) {
-  document.querySelectorAll("section").forEach(s => s.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-  window.scrollTo(0, 0);
-  if(id === 'cart') renderCart();
+let cart=[];
+let selectedFish=null;
+let selectedPrice=0;
+let selectedWeight=0;
+
+function show(id){
+  document.querySelectorAll("section, #home").forEach(s=>s.classList.add("hidden"));
+  
+  if(id === 'home') {
+    document.getElementById('home').classList.remove('hidden');
+    checkAnimations();
+  } else {
+    document.getElementById(id).classList.remove("hidden");
+  }
+  
+  window.scrollTo(0,0);
 }
 
-// --- IMAGE SLIDER ---
 const images = document.querySelectorAll(".slider img");
 let activeIndex = 0;
-setInterval(() => {
-  images[activeIndex].classList.remove("active");
-  activeIndex = (activeIndex + 1) % images.length;
-  images[activeIndex].classList.add("active");
-}, 4000);
 
-// --- PRODUCT LOGIC ---
-function loadCategory(cat) {
+function rotateImages() {
+    images[activeIndex].classList.remove("active");
+    activeIndex = (activeIndex + 1) % images.length;
+    images[activeIndex].classList.add("active");
+}
+
+setInterval(rotateImages, 4000);
+
+const steps = document.querySelectorAll(".process-step");
+
+function checkAnimations() {
+  const triggerBottom = window.innerHeight * 0.8; 
+
+  steps.forEach((step, index) => {
+    const stepTop = step.getBoundingClientRect().top;
+
+    if (stepTop < triggerBottom) {
+      setTimeout(() => {
+        step.classList.add("active");
+      }, index * 200); 
+    }
+  });
+}
+
+window.addEventListener("scroll", checkAnimations);
+document.addEventListener("DOMContentLoaded", checkAnimations);
+
+function loadCategory(cat){
   show("products");
-  let list = document.getElementById("productList");
-  list.innerHTML = "";
-  document.getElementById("productTitle").innerText = cat.toUpperCase() + " FISH";
+  let list=document.getElementById("productList");
+  list.innerHTML="";
+  document.getElementById("productTitle").innerText=cat.toUpperCase()+" FISH";
 
-  fish[cat].forEach(name => {
-    let div = document.createElement("div");
-    div.className = "product";
-    div.innerHTML = `
-      <div style="height: 200px; background: var(--dark); display: flex; align-items: center; justify-content: center; font-size: 50px;">🐟</div>
+  fish[cat].forEach(name=>{
+    let img="images/"+name+".jpg"; 
+    let div=document.createElement("div");
+    div.className="product";
+    div.innerHTML=`
+      <img src="${img}" alt="${name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'100%\\' height=\\'220\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%2308313a\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'white\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\'>No Image</text></svg>'">
       <div class="product-body">
-        <h3 style="text-transform: capitalize; margin-top:0;">${name}</h3>
-        <button onclick="openFish('${name}')" style="width: 100%">Select</button>
+        <h3 style="text-transform: capitalize;">${name}</h3>
+        <button onclick="openFish('${name}','${img}')">Select Weight</button>
       </div>
     `;
     list.appendChild(div);
   });
 }
 
-function openFish(name) {
-  selectedFish = name;
-  selectedWeight = 0; 
-  selectedPrice = 0; 
-  document.getElementById("priceDisplay").innerText = "Total: ৳0";
+function openFish(name,img){
+  selectedFish=name;
+  selectedWeight=0; 
+  selectedPrice=0; 
+  document.getElementById("priceDisplay").innerText = "Total Price: ৳0";
   document.getElementById("sizeRange").value = "";
   document.getElementById("weightSelect").innerHTML = '<option value="">Choose size range first...</option>';
-  document.getElementById("fishName").innerText = name;
+  
+  document.getElementById("mainImage").src=img;
+  
+  document.getElementById("mainImage").onerror = function() {
+    this.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='400'><rect width='100%' height='100%' fill='%2308313a'/><text x='50%' y='50%' fill='white' font-size='24' dominant-baseline='middle' text-anchor='middle'>Image Placeholder</text></svg>";
+  };
+
+  document.getElementById("fishName").innerText=name;
   show("productPage");
 }
 
-function loadWeightOptions() {
-  let select = document.getElementById("weightSelect");
-  select.innerHTML = '<option value="">Select exact weight...</option>';
+function loadWeightOptions(){
+  let select=document.getElementById("weightSelect");
+  select.innerHTML='<option value="">Select exact weight...</option>';
   
-  let range = document.getElementById("sizeRange");
-  if(!range.value) return;
-
-  let text = range.options[range.selectedIndex].text;
-  selectedPrice = parseInt(range.options[range.selectedIndex].dataset.price);
-
-  let weights = text.includes("2-3") ? [2, 2.5, 3] : text.includes("3-5") ? [3, 3.5, 4, 4.5, 5] : [5, 5.5, 6, 6.5, 7];
-
-  weights.forEach(v => {
-    let opt = document.createElement("option");
-    opt.value = v; opt.text = v + " KG";
-    select.appendChild(opt);
-  });
-}
-
-function calculatePrice() {
-  let weight = parseFloat(document.getElementById("weightSelect").value);
-  if(!weight) return;
-  selectedWeight = weight;
-  document.getElementById("priceDisplay").innerText = "Total: ৳" + (weight * selectedPrice);
-}
-
-function addSelectedFish() {
-  if(!selectedWeight) return alert("Please select weight!");
-  
-  cart.push({ name: selectedFish, kg: selectedWeight, price: (selectedWeight * selectedPrice) });
-  saveCart(); // Save to localStorage
-  
-  document.getElementById("cartCount").innerText = cart.length;
-  let btn = document.getElementById("addToCartBtn");
-  btn.innerText = "✅ Added!";
-  btn.style.background = "#25D366";
-  setTimeout(() => { btn.innerText = "Add To Cart"; btn.style.background = "var(--secondary)"; }, 2000);
-}
-
-// --- CART & CHECKOUT LOGIC ---
-function renderCart() {
-  let items = document.getElementById("cartItems");
-  items.innerHTML = "";
-  let subtotal = 0;
-
-  if(cart.length === 0) {
-    items.innerHTML = "<p style='text-align:center;'>Your cart is empty.</p>";
-    document.getElementById("cartTotal").innerText = "Subtotal: ৳0";
+  let range=document.getElementById("sizeRange");
+  if(!range.value) {
+    document.getElementById("priceDisplay").innerText = "Total Price: ৳0";
+    selectedWeight = 0;
     return;
   }
 
-  cart.forEach((i, index) => {
-    items.innerHTML += `
-      <div style="display:flex; justify-content:space-between; align-items: center; background: var(--card); padding: 15px 20px; margin-bottom: 10px; border-radius: 8px;">
-        <span style="text-transform: capitalize; font-size: 18px; font-weight: 600;">${i.name} <span style="color: var(--secondary); font-size: 14px;">(${i.kg}kg)</span></span>
-        <div style="display: flex; align-items: center; gap: 20px;">
+  let text=range.options[range.selectedIndex].text;
+  selectedPrice=parseInt(range.options[range.selectedIndex].dataset.price);
+
+  let weights=[];
+  if(text=="2-3 KG") weights=[2,2.5,3];
+  else if(text=="3-5 KG") weights=[3,3.5,4,4.5,5];
+  else if(text=="5+ KG") weights=[5,5.5,6,6.5,7];
+
+  weights.forEach(v=>{
+    let opt=document.createElement("option");
+    opt.value=v;
+    opt.text=v+" KG";
+    select.appendChild(opt);
+  });
+  
+  document.getElementById("priceDisplay").innerText = "Total Price: ৳0";
+  selectedWeight = 0;
+}
+
+function calculatePrice(){
+  let weightInput = document.getElementById("weightSelect").value;
+  if(!weightInput) {
+    document.getElementById("priceDisplay").innerText = "Total Price: ৳0";
+    selectedWeight = 0;
+    return; 
+  }
+  
+  let weight=parseFloat(weightInput);
+  selectedWeight=weight;
+  let total=weight*selectedPrice;
+  
+  document.getElementById("priceDisplay").innerText="Total Price: ৳"+total;
+}
+
+function addSelectedFish(){
+  if(selectedWeight === 0 || isNaN(selectedWeight)) {
+      alert("Please select a size range and exact weight first!");
+      return;
+  }
+
+  let total=selectedWeight*selectedPrice;
+  cart.push({name:selectedFish,kg:selectedWeight,price:total});
+  document.getElementById("cartCount").innerText=cart.length;
+
+  let btn = document.getElementById("addToCartBtn");
+  let originalText = btn.innerText;
+  btn.innerText = "✅ Added to Cart!";
+  btn.style.backgroundColor = "#4CAF50"; 
+
+  setTimeout(() => {
+      btn.innerText = originalText;
+      btn.style.backgroundColor = "var(--secondary)";
+  }, 2000);
+}
+
+function showCart(){
+  show("cart");
+  let items=document.getElementById("cartItems");
+  let summary=document.getElementById("summaryItems");
+  
+  items.innerHTML="";
+  summary.innerHTML="";
+  let total=0;
+
+  if(cart.length === 0) {
+    items.innerHTML = "<p>Your cart is empty.</p>";
+    document.getElementById("cartTotal").innerText="Subtotal: ৳0";
+    document.getElementById("finalTotal").innerText="0";
+    return;
+  }
+
+  cart.forEach((i,index)=>{
+    items.innerHTML+=`
+      <div style="display:flex; justify-content:space-between; background: var(--dark); padding: 15px; margin-bottom: 10px; border-radius: 8px;">
+        <span style="text-transform: capitalize; font-size: 18px;">${i.name} <span style="color: var(--secondary); font-size: 14px;">(${i.kg}kg)</span></span>
+        <div style="display: flex; align-items: center; gap: 15px;">
           <span style="font-weight: bold;">৳${i.price}</span>
-          <button style="background: transparent; color: #ff4d4d; border: 1px solid #ff4d4d; padding: 5px 12px;" onclick="removeItem(${index})">Remove</button>
+          <button style="background: #e63946; padding: 5px 10px;" onclick="removeItem(${index})">X</button>
         </div>
       </div>
     `;
-    subtotal += i.price;
+    summary.innerHTML+=`<p style="display: flex; justify-content: space-between; text-transform: capitalize;"><span>${i.name} (${i.kg}kg)</span> <span>৳${i.price}</span></p>`;
+    total+=i.price;
   });
 
-  document.getElementById("cartTotal").innerText = "Subtotal: ৳" + subtotal;
-  updateDelivery();
+  document.getElementById("cartTotal").innerText="Subtotal: ৳"+total;
+  updateDeliveryTotal(total);
 }
 
-function removeItem(index) {
-  cart.splice(index, 1);
-  saveCart(); // Update localStorage
-  document.getElementById("cartCount").innerText = cart.length;
-  renderCart();
+function removeItem(index){
+  cart.splice(index,1);
+  document.getElementById("cartCount").innerText=cart.length;
+  showCart();
 }
 
-function updateDelivery() {
+function updateDeliveryTotal(subtotal){
+  let delivery=parseInt(document.getElementById("locationSelect").value);
+  document.getElementById("deliveryCharge").innerText=delivery;
+  document.getElementById("finalTotal").innerText=subtotal+delivery;
+}
+
+function updateDelivery(){
   let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-  let delivery = parseInt(document.getElementById("locationSelect").value || 120);
-  document.getElementById("finalTotal").innerText = subtotal + delivery;
+  updateDeliveryTotal(subtotal);
 }
 
-// --- THE NEW WHATSAPP INTEGRATION ---
-function confirmOrderWhatsApp() {
+function generateOrderID(){
+  return "RR-"+Math.floor(Math.random()*100000);
+}
+
+function confirmOrder(){
   let name = document.getElementById("custName").value;
   let phone = document.getElementById("custPhone").value;
   let address = document.getElementById("custAddress").value;
 
-  if(cart.length === 0) return alert("Your cart is empty!");
-  if(!name || !phone || !address) return alert("Please fill in all delivery details.");
+  if(cart.length === 0) {
+      alert("Your cart is empty! Please add some fish first.");
+      return;
+  }
 
-  let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-  let delivery = parseInt(document.getElementById("locationSelect").value);
-  let finalTotal = subtotal + delivery;
+  if(name === "" || phone === "" || address === "") {
+      alert("Please fill in your Name, Phone Number, and Address for delivery.");
+      return;
+  }
 
-  // Format the message for WhatsApp
-  let text = `*New Order - The River Run* 🐟\n\n`;
-  text += `*Customer:* ${name}\n`;
-  text += `*Phone:* ${phone}\n`;
-  text += `*Address:* ${address}\n\n`;
-  text += `*Order Details:*\n`;
+  let id=generateOrderID();
+  document.getElementById("orderID").innerText="Order ID: "+id;
+  cart=[];
+  document.getElementById("cartCount").innerText=0;
   
-  cart.forEach(item => {
-      // Capitalize first letter of fish name
-      let fishName = item.name.charAt(0).toUpperCase() + item.name.slice(1);
-      text += `• ${fishName} (${item.kg}kg) - ৳${item.price}\n`;
-  });
+  document.getElementById("custName").value = "";
+  document.getElementById("custPhone").value = "";
+  document.getElementById("custAddress").value = "";
+  document.getElementById("custNote").value = "";
+  
+  show("orderSuccess");
+}
 
-  text += `\n*Subtotal:* ৳${subtotal}\n`;
-  text += `*Delivery:* ৳${delivery}\n`;
-  text += `*Total Due (COD):* ৳${finalTotal}\n`;
+function trackOrder(){
+  let id=document.getElementById("trackInput").value;
+  if(id === "") {
+    alert("Please enter an Order ID.");
+    return;
+  }
 
-  // Your business WhatsApp number (Replace with your actual number, including country code 880)
-  let businessNumber = "+8801886724213"; 
-  
-  // Create the URL and open WhatsApp
-  let encodedText = encodeURIComponent(text);
-  let whatsappURL = `https://wa.me/${businessNumber}?text=${encodedText}`;
-  
-  // Clear the cart after ordering
-  cart = [];
-  saveCart();
-  document.getElementById("cartCount").innerText = "0";
-  
-  // Redirect user
-  window.open(whatsappURL, '_blank');
-  show('home');
+  document.getElementById("trackResult").innerHTML=`
+    <div style="background: var(--card); padding: 30px; border-radius: 10px; border: 1px solid var(--secondary);">
+      <h3 style="color: var(--accent); margin-bottom: 30px;">Status for: ${id}</h3>
+      <div style="display:flex; justify-content:space-between; flex-wrap: wrap; gap: 15px;">
+        <div style="flex:1; text-align:center; color: #4CAF50;">
+          <div style="font-size: 30px; margin-bottom: 10px;">🧾</div>
+          <strong>Order Placed</strong>
+        </div>
+        <div style="flex:1; text-align:center; color: #4CAF50;">
+          <div style="font-size: 30px; margin-bottom: 10px;">🐟</div>
+          <strong>Fish Sourced</strong>
+        </div>
+        <div style="flex:1; text-align:center; opacity: 0.5;">
+          <div style="font-size: 30px; margin-bottom: 10px;">📦</div>
+          Packing
+        </div>
+        <div style="flex:1; text-align:center; opacity: 0.5;">
+          <div style="font-size: 30px; margin-bottom: 10px;">🚚</div>
+          Delivery
+        </div>
+      </div>
+    </div>
+  `;
 }
 </script>
 
 </body>
 </html>
+
+
+
