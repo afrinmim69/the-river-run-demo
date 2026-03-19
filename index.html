@@ -306,7 +306,6 @@ button:hover {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  /* Reliable CDN link for the Bangladesh SVG Map */
   background-image: url('https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/bd/vector.svg'); 
   background-size: 85%;
   background-position: center;
@@ -321,7 +320,6 @@ button:hover {
   flex-direction: column;
   align-items: center;
   z-index: 2; 
-  /* Centers the pin perfectly on its coordinates */
   transform: translateX(-50%);
 }
 
@@ -367,12 +365,12 @@ button:hover {
   margin-top: 3px;
 }
 
-/* GEOGRAPHICALLY CORRECT MAP COORDINATES */
-.map-pin.sylhet { top: 28%; left: 68%; }       /* Northeast */
-.map-pin.mymensingh { top: 32%; left: 50%; }   /* North Central */
-.map-pin.chandpur { top: 56%; left: 58%; }     /* Central-South */
-.map-pin.khulna { top: 70%; left: 33%; }       /* Southwest */
-.map-pin.coxs { top: 82%; left: 82%; }         /* Extreme Southeast */
+/* PERFECTED GEOGRAPHIC MAP COORDINATES */
+.map-pin.sylhet { top: 20%; left: 76%; }       /* Pushed higher and right */
+.map-pin.mymensingh { top: 25%; left: 46%; }   /* Pushed up and left */
+.map-pin.chandpur { top: 50%; left: 54%; }     /* Pushed up into the delta */
+.map-pin.khulna { top: 68%; left: 26%; }       /* Pushed down and left */
+.map-pin.coxs { top: 86%; left: 85%; }         /* Pushed down and right */
 /* --------------------------------------- */
 
 .section{
