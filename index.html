@@ -247,22 +247,19 @@ button:hover {
   border: 1px solid var(--secondary);
   border-radius: 12px;
   box-shadow: inset 0 0 20px rgba(32, 201, 201, 0.2);
-  overflow: hidden; /* Keeps the map neatly inside the box */
+  overflow: hidden; 
 }
 
-/* The invisible layer trick to make the PNG glow without affecting the pins */
 .map-container::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  /* Reliable PNG fallback URL from Wikipedia */
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Bangladesh_map_blank.svg/600px-Bangladesh_map_blank.svg.png'); 
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  /* The Magic Filter */
   filter: invert(1) sepia(1) hue-rotate(130deg) brightness(0.9) opacity(0.6);
-  z-index: 0; /* Keeps map in the background */
+  z-index: 0; 
 }
 
 .map-pin {
@@ -270,10 +267,9 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2; /* Keeps your glowing pins above the map */
+  z-index: 2; 
 }
 
-/* The Glowing Dot */
 .pin-dot {
   width: 16px;
   height: 16px;
@@ -316,13 +312,11 @@ button:hover {
   margin-top: 3px;
 }
 
-/* Approximate coordinates for the map pins (percentages based on container) */
 .map-pin.sylhet { top: 25%; right: 25%; }
 .map-pin.chandpur { top: 55%; left: 45%; }
 .map-pin.khulna { top: 70%; left: 25%; }
 .map-pin.coxs { bottom: 15%; right: 20%; }
 .map-pin.mymensingh { top: 35%; left: 40%; }
-/* ------------------------------------ */
 
 .section{
   padding:70px 20px;
@@ -716,10 +710,17 @@ const fish={
   hilsa:["hilsa"]
 }
 
-let cart=[];
+// Added localStorage so cart doesn't empty on page refresh
+let cart = JSON.parse(localStorage.getItem('riverRunCart')) || [];
 let selectedFish=null;
 let selectedPrice=0;
 let selectedWeight=0;
+
+// Set initial cart count on page load
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("cartCount").innerText = cart.length;
+    checkAnimations();
+});
 
 function show(id){
   document.querySelectorAll("section, #home").forEach(s=>s.classList.add("hidden"));
@@ -762,7 +763,6 @@ function checkAnimations() {
 }
 
 window.addEventListener("scroll", checkAnimations);
-document.addEventListener("DOMContentLoaded", checkAnimations);
 
 function loadCategory(cat){
   show("products");
@@ -856,6 +856,9 @@ function addSelectedFish(){
 
   let total=selectedWeight*selectedPrice;
   cart.push({name:selectedFish,kg:selectedWeight,price:total});
+  
+  // Save to local storage
+  localStorage.setItem('riverRunCart', JSON.stringify(cart));
   document.getElementById("cartCount").innerText=cart.length;
 
   let btn = document.getElementById("addToCartBtn");
@@ -905,6 +908,8 @@ function showCart(){
 
 function removeItem(index){
   cart.splice(index,1);
+  // Update local storage
+  localStorage.setItem('riverRunCart', JSON.stringify(cart));
   document.getElementById("cartCount").innerText=cart.length;
   showCart();
 }
@@ -941,7 +946,10 @@ function confirmOrder(){
 
   let id=generateOrderID();
   document.getElementById("orderID").innerText="Order ID: "+id;
+  
+  // Clear cart and local storage after order
   cart=[];
+  localStorage.removeItem('riverRunCart');
   document.getElementById("cartCount").innerText=0;
   
   document.getElementById("custName").value = "";
@@ -987,6 +995,3 @@ function trackOrder(){
 
 </body>
 </html>
-
-
-
